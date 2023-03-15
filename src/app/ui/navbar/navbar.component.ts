@@ -15,12 +15,14 @@ export class NavbarComponent implements OnInit {
   menuBoxIsOpen!:boolean;
   openedWindows!:String[]
   allMenuOptions!:any
+  username!:any;
   constructor(private location: Location,private router:Router) {
 
   }
 
 
   ngOnInit(): void {
+    this.setUser()
     
      
 
@@ -72,6 +74,9 @@ export class NavbarComponent implements OnInit {
   navigate(path:string){
     this.router.navigateByUrl(path)
 
+  }
+  setUser(){
+    this.username=sessionStorage.getItem("username")
   }
 
 }
