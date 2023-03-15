@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   sideNavIsOpen!:boolean;
   menuBoxIsOpen!:boolean;
   openedWindows!:String[]
+  allMenuOptions!:any
   constructor(private location: Location,private router:Router) {
 
   }
@@ -28,8 +29,15 @@ export class NavbarComponent implements OnInit {
 
     this.userBoxIsOpen=false;
     this.menuBoxIsOpen=false;
-    this.openedWindows=["djkkdjk"];
-     
+    this.openedWindows=[];
+    this.allMenuOptions=
+    [
+      {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles"},
+      {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre"},
+      {name:"Perimetre",route:"/tiers",path:"autres>config"},
+      {name:"Menu/Roles",route:"/tiers",path:"autres>config"}
+
+  ]
   }
   toggleNotificationBox(){
     this.notificationBoxIsOpen?this.userBoxIsOpen=false:this.userBoxIsOpen=false;
@@ -51,10 +59,13 @@ export class NavbarComponent implements OnInit {
     this.menuBoxIsOpen=true;
 
   }
-  openingAMenu(menuName:String){
-    if(this.openedWindows.indexOf(menuName)==-1)
-    this.openedWindows.push(menuName);
+  openingAMenu(menuName:any){
+    if(this.openedWindows.indexOf(menuName.name)==-1)
+    this.openedWindows.push(menuName.name);
+
+    this.router.navigateByUrl(menuName.route)
     this.toggleSideNav();
+    
      
 
   }

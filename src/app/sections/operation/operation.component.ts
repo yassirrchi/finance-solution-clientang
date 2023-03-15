@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from 'src/app/Services/wallet.service';
 
 @Component({
   selector: 'app-operation',
@@ -8,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class OperationComponent implements OnInit {
 
   lockForm:boolean=true;
+  wallets!:any;
+
+  constructor(private walletService:WalletService){}
+
+
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.wallets=this.walletService.getAllWallets().subscribe((data)=>{this.wallets=data},(error)=>{console.log(error)})
+     
   }
 
   unlockForm(){

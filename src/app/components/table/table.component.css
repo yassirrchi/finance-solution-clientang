@@ -1,0 +1,37 @@
+.table{
+    background-color: #343434;
+    color: white;
+    
+
+}
+table{
+    width: 100%;
+}
+td,th{
+    padding: 10px 20px;
+    text-align: center;
+
+}
+thead{
+    background-color: rgb(26, 26, 26);
+}
+button{
+    background-color: orange;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    outline: none;
+}
+button:hover{
+    background-color: rgb(167, 108, 0);
+    outline: none;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+
+i{
+    font-size: 20px;
+     
+}

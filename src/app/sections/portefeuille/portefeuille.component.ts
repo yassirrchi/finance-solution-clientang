@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { WalletService } from 'src/app/Services/wallet.service';
 declare let alertify:any;
 
@@ -11,7 +12,7 @@ declare let alertify:any;
 export class PortefeuilleComponent {
   walletForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private walletService:WalletService) {
+  constructor(private formBuilder: FormBuilder,private walletService:WalletService,private router:Router) {
     this.walletForm = this.formBuilder.group({
       code: ['', Validators.required],
       name: ['', [Validators.required]],
@@ -35,6 +36,7 @@ export class PortefeuilleComponent {
     this.walletService.createWallet(this.walletForm).subscribe((data)=>{
 
       alertify.success("wallet"+data.code+" ... saved as "+data.status)
+      this.router.navigateByUrl("/portefeuille/portefeuilles")
 
 
 

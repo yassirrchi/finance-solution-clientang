@@ -1,0 +1,34 @@
+<div class="table">
+    <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Active</th>
+            <th>External Code</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+           
+          <tr *ngFor="let wallet of wallets">
+            <td>{{wallet["id"]}}</td>
+            <td>{{wallet["code"]}}</td>
+            <td>{{wallet["name"]}}</td>
+            <td>{{wallet["active"]}}</td>
+            <td>{{wallet["external_code"]}}</td>
+            <td>{{wallet["status"]}}</td>
+            <td><button><i class="bi bi-eye-fill"></i></button><button><i class="bi bi-pencil-square"></i></button><button><i class="bi bi-archive-fill"></i></button></td>
+             
+
+          </tr>
+
+           
+          <!-- add more rows as needed -->
+        </tbody>
+      </table>
+      
+
+</div>

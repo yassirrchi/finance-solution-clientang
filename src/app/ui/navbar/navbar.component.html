@@ -93,47 +93,12 @@
      
      
      
-    <div class="menu-option-item" (click)="openingAMenu('Actions')">
-        <div class="content"  >
+     
+    <div class="menu-option-item" *ngFor="let menuOption of  allMenuOptions " >
+        <div class="content"   (click)="openingAMenu(menuOption)">
 
-            <h4>Actions</h4>
-            <p>Transactions à Placements / Financements à Action à Opérations sur titre</p>
-            
-        </div>
-
-    </div>
-    <div class="menu-option-item" (click)="openingAMenu('PorteFeuilles')">
-        <div class="content"  >
-
-            <h4>PorteFeuilles</h4>
-            <p>autres>portefeuilles</p>
-            
-        </div>
-
-    </div>
-    <div class="menu-option-item" (click)="openingAMenu('Perimetre')" >
-        <div class="content"  >
-
-            <h4>Perimetre</h4>
-            <p>autres>config</p>
-            
-        </div>
-
-    </div>
-    <div class="menu-option-item" (click)="openingAMenu('Menu/roles')">
-        <div class="content"  >
-
-            <h4>Menu/roles</h4>
-            <p>autres>config</p>
-            
-        </div>
-
-    </div>
-    <div class="menu-option-item" (click)="openingAMenu('Entite tiers')">
-        <div class="content"  >
-
-            <h4>Entite tiers</h4>
-            <p>autres>config</p>
+            <h4>{{menuOption.name}}</h4>
+            <p>{{menuOption.path}}</p>
             
         </div>
 

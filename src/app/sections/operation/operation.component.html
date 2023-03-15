@@ -88,8 +88,9 @@
 
             <label for="type-operation">Portefeuille:</label>
   <select id="type-operation" name="type-operation" [disabled]="lockForm">
-    <option value="buyEquityShare">Buy Equity Share</option>
-    <option value="sellEquityShare">Sell Equity Share</option>
+    <option value=""></option>
+     
+    <option value={{wallet.Id}} *ngFor="let wallet of wallets">{{wallet.code}} |  {{wallet.name}}</option>
   </select><br><br>
 
   <label for="fond">Depositaire:</label>

@@ -26,5 +26,12 @@ export class WalletService {
 
   }
 
+
+  getAllWallets():Observable<any>{
+
+    return this.http.get<any>("http://localhost:4500/api/v1/wallet/all")
+
+  }
+
   
 }

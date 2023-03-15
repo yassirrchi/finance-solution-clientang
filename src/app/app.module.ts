@@ -11,6 +11,8 @@ import { OperationComponent } from './sections/operation/operation.component';
 import { TiersComponent } from './sections/tiers/tiers.component';
 import { PortefeuilleComponent } from './sections/portefeuille/portefeuille.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './components/table/table.component';
+import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {  HttpClientModule } from '@angular/common/http';
     UserAuthComponent,
     OperationComponent,
     TiersComponent,
-    PortefeuilleComponent
+    PortefeuilleComponent,
+    TableComponent,
+    PortefeuillesComponent
   ],
   imports: [
     BrowserModule,
