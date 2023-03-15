@@ -1,0 +1,13 @@
+{
+    "menu": {
+      "logout": {},
+      "settings": {
+        "change_username": {},
+        "change_password": {}
+      },
+      "services": {
+        "accounting": {},
+        "lawyer": {}
+      }
+    }
+  }

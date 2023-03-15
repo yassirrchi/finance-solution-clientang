@@ -3,14 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './ui/navbar/navbar.component';
+import { UserAuthComponent } from './sections/user-auth/user-auth.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { OperationComponent } from './sections/operation/operation.component';
+import { TiersComponent } from './sections/tiers/tiers.component';
+import { PortefeuilleComponent } from './sections/portefeuille/portefeuille.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    UserAuthComponent,
+    OperationComponent,
+    TiersComponent,
+    PortefeuilleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,231 @@
+<div class="operation-section">
+    <div class="operation-tool-bar">
+        <div class="input-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="bi bi-search"></i></button>
+            <button type="submit" (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+        </div>
+        <div class="operation-control">
+            
+            <button type="submit"><i class="bi bi-file-earmark-check"></i></button>
+            <select class="operation-status" [disabled]="lockForm">
+                <option class="draft">draft</option>
+                <option>submit</option>
+            </select>
+        </div>
+         
+    </div>
+    <div class="operation-options-nav">
+        <div class="option-item">
+            Operation
+        </div>
+        <div class="option-item">
+            Frais
+        </div>
+        <div class="option-item">
+            Evenements
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<!-- form below-->
+
+
+
+
+
+<!-- pricipale option form-->
+
+
+<div *ngIf="true">
+
+    <div class="operation-form">
+
+
+
+        <div class="operation-form-section">
+
+            <label for="type-operation">Type d'operation:</label>
+           <select id="type-operation" name="type-operation" [disabled]="lockForm">
+           <option value="buyEquityShare">Buy Equity Share</option>
+           <option value="sellEquityShare">Sell Equity Share</option>
+           </select><br><br>
+
+           <label for="fond">Fond:</label>
+           <select id="fond" name="fond" [disabled]="lockForm">
+           <option value="fond1">Fond 1</option>
+           <option value="fond2">Fond 2</option>
+           </select><br><br>
+
+           <label for="compte-entite">Compte entite:</label>
+           <select id="compte-entite" [disabled]="lockForm" name="compte-entite">
+           <option value="compte1">Compte 1</option>
+           <option value="compte2">Compte 2</option>
+           </select><br><br>
+ 
+  <label for="date-operation">Date d'operation:</label>
+  <input type="date" id="date-operation" [disabled]="lockForm" name="date-operation"><br><br>
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+
+
+            <label for="type-operation">Portefeuille:</label>
+  <select id="type-operation" name="type-operation" [disabled]="lockForm">
+    <option value="buyEquityShare">Buy Equity Share</option>
+    <option value="sellEquityShare">Sell Equity Share</option>
+  </select><br><br>
+
+  <label for="fond">Depositaire:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value="fond1">Fond 1</option>
+    <option value="fond2">Fond 2</option>
+  </select><br><br>
+
+  <label for="compte-entite">Compte Contrepartie:</label>
+  <select id="compte-entite" name="compte-entite" [disabled]="lockForm">
+    <option value="compte1">Compte 1</option>
+    <option value="compte2">Compte 2</option>
+  </select><br><br>
+
+  <label for="date-operation">Date d'valeur:</label>
+  <input type="date" id="date-operation" name="date-operation"><br><br>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+            <label for="type-operation">Contrepartie:</label>
+  <select id="type-operation" name="type-operation" [disabled]="lockForm">
+    <option value="buyEquityShare">Buy Equity Share</option>
+    <option value="sellEquityShare">Sell Equity Share</option>
+  </select><br><br>
+
+  <label for="fond">Intermediaire:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value="fond1">Fond 1</option>
+    <option value="fond2">Fond 2</option>
+  </select><br><br>
+
+   
+
+
+
+        </div>
+    
+
+    </div>
+
+
+
+
+
+
+    
+
+
+    <div class="operation-form">
+
+
+
+        <div class="operation-form-section">
+
+            <label for="type-operation">Quantite:</label>
+           <input type="number" [disabled]="lockForm">
+           <br><br>
+
+           <label for="fond">Fond:</label>
+           <select id="fond" name="fond" [disabled]="lockForm">
+           <option value="fond1">Fond 1</option>
+           <option value="fond2">Fond 2</option>
+           </select><br><br>
+
+            <br><br>
+ 
+  
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+
+
+            <label for="type-operation">Portefeuille:</label>
+  <select id="type-operation" name="type-operation" [disabled]="lockForm">
+    <option value="buyEquityShare">Buy Equity Share</option>
+    <option value="sellEquityShare">Sell Equity Share</option>
+  </select><br><br>
+
+  
+
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+            <label for="type-operation">Contrepartie:</label>
+  <select id="type-operation" name="type-operation" [disabled]="lockForm">
+    <option value="buyEquityShare">Buy Equity Share</option>
+    <option value="sellEquityShare">Sell Equity Share</option>
+  </select><br><br>
+
+  <label for="fond">Devise:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value="fond1">Fond 1</option>
+    <option value="fond2">Fond 2</option>
+  </select><br><br>
+
+   
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- end pricipale option form-->
+
+<!-- frais option form-->
+
+
+</div>
+

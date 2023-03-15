@@ -1,0 +1,45 @@
+ <section>
+    <div class="form-container" >
+    <form  [formGroup]="userForm" (ngSubmit)="onsubmit()">
+        <div  class="form-group">
+          <label class="text-label" for="username">Utilisateur:</label>
+          <input type="text" id="username" formControlName="username" name="username" required>
+        </div>
+      
+        <div class="form-group">
+          <label class="text-label" for="password">Mot de passe:</label>
+          <input type="password" id="password" formControlName="password" name="password" required>
+        </div>
+      
+        <div class="form-group">
+          <label class="text-label" for="language">Langue:</label>
+          <select id="language" formControlName="langue" name="language">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label class="text-label" for="theme">Thème:</label>
+          <select id="theme" formControlName="theme" name="theme">
+            <option value="dark">Sombre</option>
+            <option value="light">Clair</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" formControlName="remember" id="checkbox" name="checkbox">
+                <label for="checkbox">se souvenir de moi</label>
+                
+              </div>
+        </div>
+        <div class="form-group">
+            <button class="submit-button" (submit)="onsubmit()">Se connecter</button>
+          </div>
+      
+         
+      </form>
+    </div>
+    </section>
+ 

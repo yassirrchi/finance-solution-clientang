@@ -1,0 +1,151 @@
+<nav >
+    <div id="menu-options">
+        <div class="Menu-button" (click)="toggleSideNav() ">
+            <i class="bi bi-list white-item"></i>
+
+        </div>
+        <div class="Menu-opened-windows"> 
+             
+                <div *ngFor="let item of openedWindows" class="OpenedMenuItems" (click)="navigate('tiers')">
+                    {{item}}
+                </div>
+            
+
+        </div>
+    </div>
+    <div id="notifications-user">
+        <div class="notifications" (click)="toggleNotificationBox()"><i class="bi bi-bell-fill white-item" ></i><span class="notification-count" >3</span></div>
+        <div class="user  " (click)="toggleUserBox()"><span class="white-item">yassir </span> <i class="bi bi-person-circle " style="font-size: large;color:orange"></i></div>
+    </div>
+
+</nav>
+
+<div id="notifications-box" *ngIf="notificationBoxIsOpen">
+    <h4 >Notifications</h4>
+    <hr>
+    <div class="notification-item">
+        <div class="content">
+            <i style="color: rgb(52, 255, 119);" class="bi bi-check-square-fill"></i> Yassir vient de valider ....
+        </div>
+
+    </div>
+    <div class="notification-item">
+        <div class="content">
+            <i style="color: rgb(255, 107, 80);" class="bi bi-dash-square-fill"></i> Omar vient de refuser ....
+        </div>
+
+    </div>
+    <div class="notification-item">
+        <div class="content">
+            <i style="color: rgb(255, 226, 94);" class="bi bi-info-square-fill"></i> L'operation #6726 ....
+        </div>
+
+    </div>
+
+</div>
+
+<div id="user-options-box" *ngIf="userBoxIsOpen">
+    <h4 >User section</h4>
+    <hr>
+    <div class="user-option-item">
+        <div class="content">
+            Settings
+        </div>
+
+    </div>
+    <div class="user-option-item">
+        <div class="content">
+            Logout
+        </div>
+
+    </div>
+    
+
+</div>
+
+<div id="side-bar" *ngIf="sideNavIsOpen">
+     
+     
+    <div class="side-option-item">
+        <div class="content">
+            <input (keypress)="onTyping()">
+        </div>
+
+    </div>
+    <div class="side-option-item" *ngIf="!menuBoxIsOpen">
+        <div class="content" (click)="toggleMenuBox()" >
+             
+             menu
+        </div>
+
+    </div>
+    <div class="side-option-item">
+        <div class="content" (click)="toggleSideNav()">
+            close menu
+        </div>
+
+    </div>
+    
+
+</div>
+
+<div id="menu-box" *ngIf="menuBoxIsOpen">
+     
+     
+     
+    <div class="menu-option-item" (click)="openingAMenu('Actions')">
+        <div class="content"  >
+
+            <h4>Actions</h4>
+            <p>Transactions à Placements / Financements à Action à Opérations sur titre</p>
+            
+        </div>
+
+    </div>
+    <div class="menu-option-item" (click)="openingAMenu('PorteFeuilles')">
+        <div class="content"  >
+
+            <h4>PorteFeuilles</h4>
+            <p>autres>portefeuilles</p>
+            
+        </div>
+
+    </div>
+    <div class="menu-option-item" (click)="openingAMenu('Perimetre')" >
+        <div class="content"  >
+
+            <h4>Perimetre</h4>
+            <p>autres>config</p>
+            
+        </div>
+
+    </div>
+    <div class="menu-option-item" (click)="openingAMenu('Menu/roles')">
+        <div class="content"  >
+
+            <h4>Menu/roles</h4>
+            <p>autres>config</p>
+            
+        </div>
+
+    </div>
+    <div class="menu-option-item" (click)="openingAMenu('Entite tiers')">
+        <div class="content"  >
+
+            <h4>Entite tiers</h4>
+            <p>autres>config</p>
+            
+        </div>
+
+    </div>
+
+    <div class="menu-option-item">
+        <div class="content" style="color: white;" (click)="toggleSideNav()">
+            <i class="bi bi-x-lg"></i> Close menu
+        </div>
+
+    </div>
+    
+
+</div>
+ 
