@@ -6,6 +6,21 @@ nav{
     
 
 }
+
+.search-input{
+    border-radius: 30px;
+    padding: 5px 2px;
+    color: orange;
+    outline: none;
+    background-color:#4b4b4b ;
+}
+.search-input:hover{
+    outline: 1px solid orange;
+}
+.content{
+    text-align: center;
+}
+
 #menu-options{
     width: 85%;
      
@@ -67,6 +82,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    
      
      
 }
@@ -83,8 +99,8 @@ nav{
 
 }
 .notifications:hover,.user:hover{
-    background-color:#7c7c7c;
-    border-bottom: 2px solid  #ffdd6e ;
+    background-color:#202020;
+    border-bottom: 2px solid  orange ;
      
 }
 #notifications-box{
@@ -94,6 +110,7 @@ nav{
     position: absolute;
     left: 70%;
     z-index: 300;
+    color: white;
      
 }
 .notification-count{
@@ -124,13 +141,13 @@ h4{
 .white-item{
     color: aliceblue;
 }
-.notification-item{
+.notification-item,.user-option-item{
     height: 40px;
     padding:5px ;
      
 }
-.notification-item:hover{
-    background-color: #535353;
+.notification-item:hover,.user-option-item:hover{
+    background-color: rgb(90, 59, 0);
 }
 
 #user-options-box{
@@ -140,6 +157,8 @@ h4{
     position: absolute;
     left: 80%;
     z-index: 300;
+    color: white;
+    padding: 5px;
 
 }
 
@@ -152,7 +171,7 @@ h4{
     top:0%;
     height:98vh;
     color: white;
-    border-right: 1px solid #DEC688;
+    border-right: 1px solid orange;
 
 }
 #menu-box{
@@ -184,5 +203,5 @@ h4{
 
 }
 .menu-option-item p{
-    color: #DEC688;
+    color: orange;
 }

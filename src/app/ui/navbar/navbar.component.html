@@ -49,13 +49,13 @@
     <hr>
     <div class="user-option-item">
         <div class="content">
-            Settings
+            <i class="bi bi-gear"></i> Settings
         </div>
 
     </div>
-    <div class="user-option-item">
+    <div class="user-option-item" (click)="signOut()">
         <div class="content">
-            Logout
+            <i class="bi bi-box-arrow-right"></i> Logout
         </div>
 
     </div>
@@ -67,11 +67,12 @@
      
      
     <div class="side-option-item">
-        <div class="content">
-            <input (keypress)="onTyping()">
+        <div class="content" style="display: flex;justify-content: center;">
+            <input class="search-input" (keypress)="onTyping()">
         </div>
 
     </div>
+    <hr><br><br>
     <div class="side-option-item" *ngIf="!menuBoxIsOpen">
         <div class="content" (click)="toggleMenuBox()" >
              

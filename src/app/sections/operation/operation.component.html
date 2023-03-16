@@ -4,17 +4,23 @@
             <input type="text" placeholder="Search...">
             <button type="submit"><i class="bi bi-search"></i></button>
             <button type="submit" (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+            <i class="bi bi-lock"  *ngIf="lockForm" style="color: orange;"></i>
+            <i class="bi bi-unlock" *ngIf="!lockForm" style="color: orange;"></i>
         </div>
         <div class="operation-control">
             
-            <button type="submit"><i class="bi bi-file-earmark-check"></i></button>
-            <select class="operation-status" [disabled]="lockForm">
+            <button type="submit" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"><i class="bi bi-file-earmark-check"></i></button>
+            <select class="operation-status" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"  >
+              
                 <option class="draft">draft</option>
                 <option>submit</option>
             </select>
+            
+
         </div>
          
     </div>
+     
     <div class="operation-options-nav">
         <div class="option-item">
             Operation
@@ -90,7 +96,7 @@
   <select id="type-operation" name="type-operation" [disabled]="lockForm">
     <option value=""></option>
      
-    <option value={{wallet.Id}} *ngFor="let wallet of wallets">{{wallet.code}} |  {{wallet.name}}</option>
+    <option value={{wallet.Id}} *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
   </select><br><br>
 
   <label for="fond">Depositaire:</label>
@@ -160,11 +166,8 @@
            <input type="number" [disabled]="lockForm">
            <br><br>
 
-           <label for="fond">Fond:</label>
-           <select id="fond" name="fond" [disabled]="lockForm">
-           <option value="fond1">Fond 1</option>
-           <option value="fond2">Fond 2</option>
-           </select><br><br>
+           <label for="fond">Position:</label>
+           <input type="number" [disabled]="lockForm"><br><br>
 
             <br><br>
  
@@ -183,11 +186,9 @@
 
 
 
-            <label for="type-operation">Portefeuille:</label>
-  <select id="type-operation" name="type-operation" [disabled]="lockForm">
-    <option value="buyEquityShare">Buy Equity Share</option>
-    <option value="sellEquityShare">Sell Equity Share</option>
-  </select><br><br>
+            <label for="type-operation">Prix:</label>
+            <input type="number" [disabled]="lockForm">
+  <br><br>
 
   
 
@@ -203,16 +204,13 @@
 
 
 
-            <label for="type-operation">Contrepartie:</label>
-  <select id="type-operation" name="type-operation" [disabled]="lockForm">
-    <option value="buyEquityShare">Buy Equity Share</option>
-    <option value="sellEquityShare">Sell Equity Share</option>
-  </select><br><br>
+            <label for="type-operation">Montant Brut:</label>
+            <input type="number" [disabled]="lockForm"><br><br>
 
   <label for="fond">Devise:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
-    <option value="fond1">Fond 1</option>
-    <option value="fond2">Fond 2</option>
+    <option value="MAD">MAD</option>
+    <option value="USD">USD</option>
   </select><br><br>
 
    

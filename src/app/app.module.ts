@@ -13,6 +13,7 @@ import { PortefeuilleComponent } from './sections/portefeuille/portefeuille.comp
 import {  HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './components/table/table.component';
 import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
+import { ControlBarComponent } from './components/control-bar/control-bar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.c
     TiersComponent,
     PortefeuilleComponent,
     TableComponent,
-    PortefeuillesComponent
+    PortefeuillesComponent,
+    ControlBarComponent
   ],
   imports: [
     BrowserModule,

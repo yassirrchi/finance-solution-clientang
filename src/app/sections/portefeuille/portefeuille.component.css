@@ -52,10 +52,19 @@ button{
     width:70%;
     float: right;
     transform: translate(0%,30%);
-    background-color: #595959;
-    color: white;
+     color: orange;
+    background-color: #242424;
+    border-radius: 30px;
+    padding: 0px 5px;
+    font-family: "Changa";
+    
+     
     cursor: no-drop;
 }
+.portefeuille-form-section>input:focus {
+    outline: 2px solid orange;
+}
+ 
  
 hr {
     border: none;

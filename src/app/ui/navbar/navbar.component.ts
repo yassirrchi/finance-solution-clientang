@@ -78,5 +78,8 @@ export class NavbarComponent implements OnInit {
   setUser(){
     this.username=sessionStorage.getItem("username")
   }
+  signOut(){
+    this.router.navigateByUrl("/login")
+  }
 
 }

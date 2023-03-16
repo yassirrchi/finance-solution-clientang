@@ -1,0 +1,14 @@
+<div class="operation-tool-bar">
+    <div class="input-container">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="bi bi-search"></i></button>
+        <button  (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+    </div>
+    <div class="operation-control">
+        <button type="submit"><i class="bi bi-file-earmark-check"></i></button>
+        <select class="operation-status" [disabled]="lockForm" formControlName="status">
+            <option value="DRAFT" class="draft">draft</option>
+            <option value="SUBMIT">submit</option>
+        </select>
+    </div>
+</div>
