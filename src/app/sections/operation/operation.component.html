@@ -1,4 +1,5 @@
 <div class="operation-section">
+    <form [formGroup]="operationForm" (ngSubmit)="onsubmit()">
     <div class="operation-tool-bar">
         <div class="input-container">
             <input type="text" placeholder="Search...">
@@ -163,7 +164,7 @@
         <div class="operation-form-section">
 
             <label for="type-operation">Quantite:</label>
-           <input type="number" [disabled]="lockForm">
+           <input type="number" [disabled]="lockForm" formControlName="quantite" (keydown)="onsubmit()">
            <br><br>
 
            <label for="fond">Position:</label>
@@ -187,7 +188,7 @@
 
 
             <label for="type-operation">Prix:</label>
-            <input type="number" [disabled]="lockForm">
+            <input type="number" [disabled]="lockForm" formControlName="prix" (keydown)="onsubmit()">
   <br><br>
 
   
@@ -204,8 +205,8 @@
 
 
 
-            <label for="type-operation">Montant Brut:</label>
-            <input type="number" [disabled]="lockForm"><br><br>
+            <label for="montant-brut">Montant Brut:</label>
+            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant" ><br><br>
 
   <label for="fond">Devise:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
@@ -224,7 +225,7 @@
 <!-- end pricipale option form-->
 
 <!-- frais option form-->
-
+</form>
 
 </div>
 

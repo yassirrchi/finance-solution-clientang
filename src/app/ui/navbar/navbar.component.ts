@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { MenuOption } from 'src/app/Models/wallet.model';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   userBoxIsOpen!:boolean;
   sideNavIsOpen!:boolean;
   menuBoxIsOpen!:boolean;
-  openedWindows!:String[]
+  openedWindows!:MenuOption[]
   allMenuOptions!:any
   username!:any;
   constructor(private location: Location,private router:Router) {
@@ -37,7 +38,10 @@ export class NavbarComponent implements OnInit {
       {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles"},
       {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre"},
       {name:"Perimetre",route:"/tiers",path:"autres>config"},
-      {name:"Menu/Roles",route:"/tiers",path:"autres>config"}
+      {name:"Menu/Roles",route:"/tiers",path:"autres>config"},
+      {name:"Entite Tiers",route:"/tiers",path:"autres>config"},
+      {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config"},
+      {name:"Fond",route:"/fond",path:"autres>config"}
 
   ]
   }
@@ -61,12 +65,16 @@ export class NavbarComponent implements OnInit {
     this.menuBoxIsOpen=true;
 
   }
+  
   openingAMenu(menuName:any){
-    if(this.openedWindows.indexOf(menuName.name)==-1)
-    this.openedWindows.push(menuName.name);
 
-    this.router.navigateByUrl(menuName.route)
+     if(this.openedWindows.findIndex(obj => obj.name=== menuName.name)==-1)
+     this.openedWindows.push(menuName)
+     this.router.navigateByUrl(menuName.route)
     this.toggleSideNav();
+     
+    
+     
     
      
 

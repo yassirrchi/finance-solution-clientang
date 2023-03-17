@@ -1,0 +1,127 @@
+
+<div>
+
+    <form [formGroup]="fondForm" (ngSubmit)="onsubmit()">
+    
+    <div class="operation-section">
+        
+        <div class="operation-tool-bar">
+            <div class="input-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="bi bi-search"></i></button>
+                <button  (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+            </div>
+            <div class="operation-control">
+                
+                <button type="submit"><i class="bi bi-file-earmark-check"></i></button>
+                <select class="operation-status" [disabled]="lockForm" formControlName="status">
+                    <option value="DRAFT" class="draft">draft</option>
+                    <option value="SUBMIT">submit</option>
+                </select>
+            </div>
+             
+        </div>
+        
+        <div class="operation-options-nav">
+            <div class="option-item">
+                Donnees principal
+            </div>
+            <div class="option-item">
+                Obligation details
+            </div>
+             
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- form below-->
+    
+    
+    
+    
+    
+    <!-- pricipale option form-->
+    
+    
+    
+    <div *ngIf="true">
+    
+        <div class="operation-form">
+    
+            <div class="portefeuille-form-section">
+    
+               <label for="type-operation">Code</label>
+               <input type="text" formControlName="code"><br><br>
+    
+               <label for="fond">Nom</label>
+               <input type="text" formControlName="name"><br><br>
+    
+               <label for="compte-entite">Actif</label>
+               <input type="checkbox" formControlName="active"/>
+               <br><br>
+     
+               <label for="date-operation">Code Extern</label>
+               <input type="text" formControlName="external_code"><br><br>
+               <hr><br>
+               
+               <label for="compte-entite">Perimetre de visibilite</label>
+               <select>
+                <option></option>
+               </select><br><br>
+               <hr><br>
+               <label for="type-operation">Type d'instrument</label>
+               <input type="text" formControlName="code"><br><br>
+    
+               <label for="fond">ISIN</label>
+               <input type="text" formControlName="name"><br><br>
+    
+               <label for="compte-entite">CUSIP</label>
+               <input type="text" formControlName="code"><br><br>
+                
+     
+               <label for="date-operation">DESK</label>
+               <input type="text" formControlName="external_code">
+                
+                
+    
+                
+               
+    
+    
+     
+            </div>
+        </div>
+    </div>
+</div>
+        
+    
+    </form>
+    
+    
+             
+    
+    
+    
+    
+    
+             
+        
+    
+       
+    
+    
+    
+    
+    
+    
+        
+    
+     
+    
+    

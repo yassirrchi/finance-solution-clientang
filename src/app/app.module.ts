@@ -14,6 +14,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './components/table/table.component';
 import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
 import { ControlBarComponent } from './components/control-bar/control-bar.component';
+import { FondComponent } from './sections/fond/fond.component';
+ 
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ControlBarComponent } from './components/control-bar/control-bar.compon
     PortefeuilleComponent,
     TableComponent,
     PortefeuillesComponent,
-    ControlBarComponent
+    ControlBarComponent,
+    FondComponent,
+     
   ],
   imports: [
     BrowserModule,

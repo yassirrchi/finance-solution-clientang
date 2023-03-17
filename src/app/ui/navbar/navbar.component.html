@@ -6,8 +6,8 @@
         </div>
         <div class="Menu-opened-windows"> 
              
-                <div *ngFor="let item of openedWindows" class="OpenedMenuItems" (click)="navigate('tiers')">
-                    {{item}}
+                <div *ngFor="let item of openedWindows" class="OpenedMenuItems" (click)="navigate(item.route)">
+                    {{item.name}}
                 </div>
             
 

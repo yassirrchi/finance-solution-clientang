@@ -1,0 +1,75 @@
+ 
+.operation-tool-bar{
+    background-color: #000000;
+    display: flex;
+    
+}
+.operation-control{
+    margin-left: 30px;
+}
+button{
+    background-color: orange;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.draft{
+    background-color:#929292;
+}
+.operation-status{
+    background-color: #DEC688;
+
+}
+.operation-options-nav{
+    height: 30px;
+    background-color: #181818;
+    display: flex;
+}
+.option-item{
+    color: white;
+    padding:0px 30px;
+}
+.option-item:hover{
+    background-color: orange;
+
+}
+.operation-form{
+     
+     background-color: #343434;
+    display: flex;
+    justify-content: center;
+
+}
+.portefeuille-form-section{
+    
+    padding: 30px;
+     
+    width: 70%;
+    color: white;
+     
+}
+.portefeuille-form-section>select, .portefeuille-form-section>input{
+    width:70%;
+    float: right;
+    transform: translate(0%,30%);
+     color: orange;
+    background-color: #242424;
+    border-radius: 30px;
+    padding: 0px 5px;
+    font-family: "Changa";
+    
+     
+    cursor: no-drop;
+}
+.portefeuille-form-section>input:focus {
+    outline: 2px solid orange;
+}
+ 
+ 
+hr {
+    border: none;
+    height: 0.5px;
+    background-color: orange;
+    margin: 20px 0;
+  }
+ 

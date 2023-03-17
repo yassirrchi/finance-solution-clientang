@@ -35,12 +35,17 @@ export class UserAuthComponent implements OnInit {
 
 
     },(error)=>{
+
+
       console.log(error)
+      alertify.error("something went wrong")
+
+
     })
 
 
     
-    alertify.error("something went wrong")
+     
     
 
   }
