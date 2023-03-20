@@ -98,6 +98,12 @@ nav{
     justify-content: center;
 
 }
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
 .notifications:hover,.user:hover{
     background-color:#202020;
     border-bottom: 2px solid  orange ;

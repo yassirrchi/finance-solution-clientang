@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { MenuOption } from 'src/app/Models/wallet.model';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,9 +16,25 @@ export class NavbarComponent implements OnInit {
   sideNavIsOpen!:boolean;
   menuBoxIsOpen!:boolean;
   openedWindows!:MenuOption[]
-  allMenuOptions!:any
+  allMenuOptions!:MenuOption[]
   username!:any;
-  constructor(private location: Location,private router:Router) {
+  defaultOptions:MenuOption[]=[
+    {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles"},
+    {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre"},
+    {name:"Perimetre",route:"/tiers",path:"autres>config"},
+    {name:"Menu/Roles",route:"/tiers",path:"autres>config"},
+    {name:"Entite Tiers",route:"/tiers",path:"autres>config"},
+    {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config"},
+    {name:"Fond",route:"/fond",path:"autres>config"}
+
+]
+  searchInput!:FormGroup;
+  constructor(private location: Location,private router:Router,private formBuilder: FormBuilder) {
+    this.searchInput = this.formBuilder.group({
+      search: [''],
+      
+    });
+    
 
   }
 
@@ -33,17 +50,7 @@ export class NavbarComponent implements OnInit {
     this.userBoxIsOpen=false;
     this.menuBoxIsOpen=false;
     this.openedWindows=[];
-    this.allMenuOptions=
-    [
-      {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles"},
-      {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre"},
-      {name:"Perimetre",route:"/tiers",path:"autres>config"},
-      {name:"Menu/Roles",route:"/tiers",path:"autres>config"},
-      {name:"Entite Tiers",route:"/tiers",path:"autres>config"},
-      {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config"},
-      {name:"Fond",route:"/fond",path:"autres>config"}
-
-  ]
+    this.allMenuOptions=this.defaultOptions
   }
   toggleNotificationBox(){
     this.notificationBoxIsOpen?this.userBoxIsOpen=false:this.userBoxIsOpen=false;
@@ -63,6 +70,14 @@ export class NavbarComponent implements OnInit {
   onTyping(){
     if(!this.menuBoxIsOpen)
     this.menuBoxIsOpen=true;
+
+    if(this.searchInput.controls["search"].value=="")
+    this.allMenuOptions=this.defaultOptions
+
+
+    console.log(this.searchInput.controls["search"].value)
+    this.allMenuOptions=this.defaultOptions.filter(op=>op.name.toLowerCase().includes(this.searchInput.controls["search"].value.toLowerCase()))
+     
 
   }
   

@@ -15,7 +15,7 @@
     </div>
     <div id="notifications-user">
         <div class="notifications" (click)="toggleNotificationBox()"><i class="bi bi-bell-fill white-item" ></i><span class="notification-count" >3</span></div>
-        <div class="user  " (click)="toggleUserBox()"><span class="white-item">{{username}} </span> <i class="bi bi-person-circle " style="font-size: large;color:orange"></i></div>
+        <div class="user  " (click)="toggleUserBox()"><span class="white-item" >{{username}} </span> <i class="bi bi-person-circle " style="font-size: large;color:orange"></i></div>
     </div>
 
 </nav>
@@ -68,7 +68,9 @@
      
     <div class="side-option-item">
         <div class="content" style="display: flex;justify-content: center;">
-            <input class="search-input" (keypress)="onTyping()">
+            <form [formGroup]="searchInput">
+            <input class="search-input" (keypress)="onTyping()" formControlName="search">
+        </form>
         </div>
 
     </div>

@@ -15,6 +15,8 @@ import { TableComponent } from './components/table/table.component';
 import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
 import { ControlBarComponent } from './components/control-bar/control-bar.component';
 import { FondComponent } from './sections/fond/fond.component';
+import { DetailsComponent } from './components/details/details.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
  
 
 @NgModule({
@@ -29,6 +31,8 @@ import { FondComponent } from './sections/fond/fond.component';
     PortefeuillesComponent,
     ControlBarComponent,
     FondComponent,
+    DetailsComponent,
+    SearchBarComponent,
      
   ],
   imports: [

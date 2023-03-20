@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { WalletService } from 'src/app/Services/wallet.service';
 
 @Component({
@@ -7,11 +8,13 @@ import { WalletService } from 'src/app/Services/wallet.service';
   styleUrls: ['./portefeuilles.component.css']
 })
 export class PortefeuillesComponent implements OnInit {
+  searchForm!:FormGroup;
   wallets:any
 
 
 
   constructor(private walletService:WalletService){}
+  
 
   ngOnInit(): void {
 

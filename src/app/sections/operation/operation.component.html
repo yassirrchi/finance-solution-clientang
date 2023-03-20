@@ -32,6 +32,7 @@
         <div class="option-item">
             Evenements
         </div>
+         
     </div>
 
 
@@ -102,8 +103,10 @@
 
   <label for="fond">Depositaire:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
-    <option value="fond1">Fond 1</option>
-    <option value="fond2">Fond 2</option>
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of depositaires">{{tier.code}} ☆  {{tier.name}}</option>
+     
   </select><br><br>
 
   <label for="compte-entite">Compte Contrepartie:</label>
@@ -130,14 +133,17 @@
 
             <label for="type-operation">Contrepartie:</label>
   <select id="type-operation" name="type-operation" [disabled]="lockForm">
-    <option value="buyEquityShare">Buy Equity Share</option>
-    <option value="sellEquityShare">Sell Equity Share</option>
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of contreparties">{{tier.code}} ☆  {{tier.name}}</option>
   </select><br><br>
 
   <label for="fond">Intermediaire:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
-    <option value="fond1">Fond 1</option>
-    <option value="fond2">Fond 2</option>
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of banks">{{tier.code}} ☆  {{tier.name}}</option>
+    
   </select><br><br>
 
    
@@ -164,7 +170,7 @@
         <div class="operation-form-section">
 
             <label for="type-operation">Quantite:</label>
-           <input type="number" [disabled]="lockForm" formControlName="quantite" (keydown)="onsubmit()">
+           <input type="number" [disabled]="lockForm" formControlName="quantite" (input)="onsubmit()">
            <br><br>
 
            <label for="fond">Position:</label>
@@ -188,7 +194,7 @@
 
 
             <label for="type-operation">Prix:</label>
-            <input type="number" [disabled]="lockForm" formControlName="prix" (keydown)="onsubmit()">
+            <input type="number" [disabled]="lockForm" formControlName="prix" (input)="onsubmit()">
   <br><br>
 
   

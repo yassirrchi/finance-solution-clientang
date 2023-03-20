@@ -32,6 +32,17 @@ export class WalletService {
     return this.http.get<any>("http://localhost:4500/api/v1/wallet/all")
 
   }
+  searchService(searchForm:FormGroup):Observable<any>{
+    let data=
+    {code:searchForm.controls['code'].value,
+    name:searchForm.controls['name'].value,
+    active:searchForm.controls['active'].value,
+    external_code:searchForm.controls['external_code'].value,
+    status:searchForm.controls['status'].value};
+
+    return this.http.get<any>("http://localhost:4500/api/v1/wallet/create")
+
+  }
 
   
 }
