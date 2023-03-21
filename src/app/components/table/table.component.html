@@ -17,9 +17,9 @@
             <td>{{wallet["id"]}}</td>
             <td>{{wallet["code"]}}</td>
             <td>{{wallet["name"]}}</td>
-            <td>{{wallet["active"]}}</td>
+            <td><i class="bi bi-dash-circle" style="color: rgb(255, 93, 93);" *ngIf="wallet['active']==false"></i><i class="bi bi-check-circle" style="color: rgb(81, 255, 139);"  *ngIf="wallet['active']==true"></i></td>
             <td>{{wallet["external_code"]}}</td>
-            <td>{{wallet["status"]}}</td>
+            <td><i class="bi bi-clipboard2-check" *ngIf="wallet['status']=='SUBMIT'" style="color: rgb(81, 255, 139);"></i><i class="bi bi-clipboard2" *ngIf="wallet['status']=='DRAFT'" style="color: rgb(124, 124, 124);"></i></td>
             <td><button><i class="bi bi-eye-fill"></i></button><button><i class="bi bi-pencil-square"></i></button><button><i class="bi bi-archive-fill"></i></button></td>
              
 

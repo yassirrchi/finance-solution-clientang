@@ -25,7 +25,8 @@ export class NavbarComponent implements OnInit {
     {name:"Menu/Roles",route:"/tiers",path:"autres>config"},
     {name:"Entite Tiers",route:"/tiers",path:"autres>config"},
     {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config"},
-    {name:"Fond",route:"/fond",path:"autres>config"}
+    {name:"Fond",route:"/fond",path:"autres>config"},
+    {name:"Dashboard",route:"/",path:"autres>config"}
 
 ]
   searchInput!:FormGroup;

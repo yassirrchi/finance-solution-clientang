@@ -6,9 +6,11 @@ import { TiersComponent } from './sections/tiers/tiers.component';
 import { PortefeuilleComponent } from './sections/portefeuille/portefeuille.component';
 import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
 import { FondComponent } from './sections/fond/fond.component';
+import { DashboardComponent } from './sections/dashboard/dashboard.component';
  
 
 const routes: Routes = [
+  {path:"",component:DashboardComponent},
   {path:"login",component:UserAuthComponent},
   {path:"operation",component:OperationComponent},
   {path:"tiers",component:TiersComponent},

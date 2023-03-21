@@ -17,6 +17,7 @@ import { ControlBarComponent } from './components/control-bar/control-bar.compon
 import { FondComponent } from './sections/fond/fond.component';
 import { DetailsComponent } from './components/details/details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { DashboardComponent } from './sections/dashboard/dashboard.component';
  
 
 @NgModule({
@@ -33,6 +34,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FondComponent,
     DetailsComponent,
     SearchBarComponent,
+    DashboardComponent,
      
   ],
   imports: [
