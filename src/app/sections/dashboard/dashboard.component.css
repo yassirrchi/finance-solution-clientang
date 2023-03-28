@@ -13,12 +13,17 @@ h1{
     align-items: center;
 }
 .dashboard-header-item{
+
     height: 100%;
     width: 20%;
     
     
     margin:2%;
     border-radius: 20px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 40px;
 
 }
 .regular-item{
@@ -41,6 +46,10 @@ h1{
     
     height: 100%;
     width: 50%;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    font-size: 50px;
 
 }
 .tickets{

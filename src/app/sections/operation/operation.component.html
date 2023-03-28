@@ -3,15 +3,15 @@
     <div class="operation-tool-bar">
         <div class="input-container">
             <input type="text" placeholder="Search...">
-            <button type="submit"><i class="bi bi-search"></i></button>
-            <button type="submit" (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+            <button (click)="handleSearch()" type="button"><i class="bi bi-search"></i></button>
+            <button   (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
             <i class="bi bi-lock"  *ngIf="lockForm" style="color: orange;"></i>
             <i class="bi bi-unlock" *ngIf="!lockForm" style="color: orange;"></i>
         </div>
         <div class="operation-control">
             
             <button type="submit" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"><i class="bi bi-file-earmark-check"></i></button>
-            <select class="operation-status" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"  >
+            <select class="operation-status" formControlName="statut" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"  >
               
                 <option class="draft">draft</option>
                 <option>submit</option>
@@ -55,21 +55,22 @@
 <div *ngIf="true">
 
     <div class="operation-form">
+        
 
 
 
         <div class="operation-form-section">
 
             <label for="type-operation">Type d'operation:</label>
-           <select id="type-operation" name="type-operation" [disabled]="lockForm">
-           <option value="buyEquityShare">Buy Equity Share</option>
-           <option value="sellEquityShare">Sell Equity Share</option>
+           <select id="type-operation" name="type-operation" [disabled]="lockForm" formArrayName="typeop">
+           <option value="0">Buy Equity Share</option>
+           <option value="1">Sell Equity Share</option>
            </select><br><br>
 
            <label for="fond">Fond:</label>
-           <select id="fond" name="fond" [disabled]="lockForm">
-           <option value="fond1">Fond 1</option>
-           <option value="fond2">Fond 2</option>
+           <select id="fond" name="fond" [disabled]="lockForm" formControlName="fundid">
+           <option value="{{fund.id}}" *ngFor="let fund of funds">{{fund.code}} || {{fund.name}}</option>
+            
            </select><br><br>
 
            <label for="compte-entite">Compte entite:</label>
@@ -95,10 +96,11 @@
 
 
             <label for="type-operation">Portefeuille:</label>
-  <select id="type-operation" name="type-operation" [disabled]="lockForm">
-    <option value=""></option>
+            
+  <select id="type-operation" name="type-operation" [disabled]="lockForm" formControlName="walletid">
      
-    <option value={{wallet.Id}} *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
+     
+    <option value="{{wallet.id}}" *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
   </select><br><br>
 
   <label for="fond">Depositaire:</label>
@@ -116,7 +118,7 @@
   </select><br><br>
 
   <label for="date-operation">Date d'valeur:</label>
-  <input type="date" id="date-operation" name="date-operation"><br><br>
+  <input type="date" id="date-operation" name="date-operation" [disabled]="lockForm"><br><br>
 
 
 
@@ -170,7 +172,7 @@
         <div class="operation-form-section">
 
             <label for="type-operation">Quantite:</label>
-           <input type="number" [disabled]="lockForm" formControlName="quantite" (input)="onsubmit()">
+           <input type="number"  [disabled]="lockForm" formControlName="quantite" (input)="typing()" >
            <br><br>
 
            <label for="fond">Position:</label>
@@ -194,7 +196,7 @@
 
 
             <label for="type-operation">Prix:</label>
-            <input type="number" [disabled]="lockForm" formControlName="prix" (input)="onsubmit()">
+            <input type="number" [disabled]="lockForm" formControlName="price" (input)="typing()">
   <br><br>
 
   
@@ -233,5 +235,14 @@
 <!-- frais option form-->
 </form>
 
+
+<div class="operations-outter-container" *ngIf="showSearch">
+    <div class="operations-inner-container">
+     <app-table [operations]="operations"></app-table>
+    </div>
 </div>
+
+</div>
+
+
 

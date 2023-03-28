@@ -1,0 +1,41 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ActionService {
+
+  constructor(private http:HttpClient) { }
+
+  createOperation(operationForm:FormGroup):Observable<any>{
+    //const data={username,password,role}
+   
+
+  
+    let data=
+    {fundid:operationForm.controls['fundid'].value,
+     
+    walletid:operationForm.controls['walletid'].value,
+    quantity:operationForm.controls['quantite'].value,
+    price:operationForm.controls['price'].value,
+     
+    typeop:operationForm.controls['typeop'].value,
+    createdby:operationForm.controls['createdby'].value
+     
+  
+  }
+    
+
+    return this.http.post<any>("http://localhost:4500/api/v1/operationnote/create",data)
+
+  }
+
+  getAllOperations():Observable<any>{
+
+    return this.http.get<any>("http://localhost:4500/api/v1/operationnote/all")
+
+  }
+}

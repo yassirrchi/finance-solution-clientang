@@ -27,6 +27,8 @@ export class NavbarComponent implements OnInit {
     {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config"},
     {name:"Fond",route:"/fond",path:"autres>config"},
     {name:"Dashboard",route:"/",path:"autres>config"}
+    ,
+    {name:"Dashboard",route:"/",path:"autres>config"}
 
 ]
   searchInput!:FormGroup;
@@ -104,6 +106,10 @@ export class NavbarComponent implements OnInit {
   }
   signOut(){
     this.router.navigateByUrl("/login")
+  }
+  navToSettings(){
+    this.router.navigateByUrl("/user/settings")
+
   }
 
 }

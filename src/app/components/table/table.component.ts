@@ -7,5 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TableComponent {
   @Input() wallets:any;
+  @Input() operations:any;
+  
+  
 
 }

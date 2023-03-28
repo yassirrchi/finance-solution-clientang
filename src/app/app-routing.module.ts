@@ -7,6 +7,7 @@ import { PortefeuilleComponent } from './sections/portefeuille/portefeuille.comp
 import { PortefeuillesComponent } from './sections/portefeuilles/portefeuilles.component';
 import { FondComponent } from './sections/fond/fond.component';
 import { DashboardComponent } from './sections/dashboard/dashboard.component';
+import { UsersettingsComponent } from './sections/usersettings/usersettings.component';
  
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:"portefeuille",component:PortefeuilleComponent},
   {path:"portefeuille/portefeuilles",component:PortefeuillesComponent},
   {path:"fond",component:FondComponent},
+  {path:"user/settings",component:UsersettingsComponent},
 
 
 ];

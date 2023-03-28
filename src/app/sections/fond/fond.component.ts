@@ -30,7 +30,7 @@ export class FondComponent {
     this.lockForm=false
   }
   onsubmit(){
-    //alert(this.walletForm.controls['code'].value+" "+this.walletForm.controls['name'].value+" "+this.walletForm.controls['active'].value+this.walletForm.controls['external_code'].value+this.walletForm.controls['status'].value)
+    alert(this.fondForm.controls['code'].value+" "+this.fondForm.controls['name'].value+" "+this.fondForm.controls['active'].value+this.fondForm.controls['external_code'].value)
      
      
 

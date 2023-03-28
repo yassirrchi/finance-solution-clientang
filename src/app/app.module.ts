@@ -18,6 +18,8 @@ import { FondComponent } from './sections/fond/fond.component';
 import { DetailsComponent } from './components/details/details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { DashboardComponent } from './sections/dashboard/dashboard.component';
+import { UsersettingsComponent } from './sections/usersettings/usersettings.component';
+import { OperationsTableComponent } from './components/operations-table/operations-table.component';
  
 
 @NgModule({
@@ -35,6 +37,8 @@ import { DashboardComponent } from './sections/dashboard/dashboard.component';
     DetailsComponent,
     SearchBarComponent,
     DashboardComponent,
+    UsersettingsComponent,
+    OperationsTableComponent,
      
   ],
   imports: [

@@ -1,11 +1,18 @@
 .table{
     background-color: #343434;
     color: white;
+    max-height: 300px;
+    overflow: scroll;
+
     
 
 }
 table{
-    width: 100%;
+    width: 200%;
+}
+thead{
+    position: sticky;
+    top: 0px;
 }
 td,th{
     padding: 10px 20px;

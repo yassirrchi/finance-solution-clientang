@@ -11,6 +11,7 @@ declare let alertify:any;
 })
 export class UserAuthComponent implements OnInit {
   userForm: FormGroup;
+  loading!:boolean;
 
   constructor(private formBuilder: FormBuilder,private router:Router,private userService:UserService) {
     this.userForm = this.formBuilder.group({
@@ -22,22 +23,27 @@ export class UserAuthComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.resetSessionData()
+    this.loading=false;
     
   }
   onsubmit(){
+    this.loading=true
      
     this.userService.login(this.userForm).subscribe(
       (data)=>{
         this.setSessionData(data.username,data.id)
         alertify.success("connection successful")
-        this.router.navigateByUrl("/operation")
+        this.loading=false;
+        this.router.navigateByUrl("/")
 
 
     },(error)=>{
 
 
       console.log(error)
+      this.loading=false;
       alertify.error("something went wrong")
 
 

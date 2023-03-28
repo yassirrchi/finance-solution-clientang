@@ -1,5 +1,5 @@
 <div class="table">
-    <table>
+    <table *ngIf="wallets">
         <thead>
           <tr>
             <th>Id</th>
@@ -20,6 +20,49 @@
             <td><i class="bi bi-dash-circle" style="color: rgb(255, 93, 93);" *ngIf="wallet['active']==false"></i><i class="bi bi-check-circle" style="color: rgb(81, 255, 139);"  *ngIf="wallet['active']==true"></i></td>
             <td>{{wallet["external_code"]}}</td>
             <td><i class="bi bi-clipboard2-check" *ngIf="wallet['status']=='SUBMIT'" style="color: rgb(81, 255, 139);"></i><i class="bi bi-clipboard2" *ngIf="wallet['status']=='DRAFT'" style="color: rgb(124, 124, 124);"></i></td>
+            <td><button><i class="bi bi-eye-fill"></i></button><button><i class="bi bi-pencil-square"></i></button><button><i class="bi bi-archive-fill"></i></button></td>
+             
+
+          </tr>
+
+           
+          <!-- add more rows as needed -->
+        </tbody>
+      </table>
+      <table >
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Statut Applicatif</th>
+            <th>Type d'operation</th>
+            <th>Portefeuille</th>
+            <th>Fond</th>
+            <th>Quantite</th>
+            <th>Prix</th>
+            <th>Devise</th>
+            <th>Date</th>
+            <th>Creer par</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody >
+          <!--*ngFor="let a of [1,2,3,34,4,43,3,3,3,3]-->
+           
+          <tr *ngFor="let operation of operations"   >
+            <td>{{operation.id}}</td>
+            <td>{{operation.wallet.code}}</td>
+            <td>{{operation.fund.code}}</td>
+            <td>{{operation.quantity}}</td>
+            <td>{{operation.price}}</td>
+            <td>{{operation.gross_amount}}</td>
+            <td><i class="bi bi-dash-circle" style="color: rgb(255, 93, 93);" ></i><i class="bi bi-check-circle" style="color: rgb(81, 255, 139);"  *></i></td>
+            
+            <td><i class="bi bi-clipboard2-check"  style="color: rgb(124, 124, 124);"></i></td>
+            
+            <td><button>Visualisez Les entites tiers</button></td>
+             
+            <td></td>
+           
             <td><button><i class="bi bi-eye-fill"></i></button><button><i class="bi bi-pencil-square"></i></button><button><i class="bi bi-archive-fill"></i></button></td>
              
 

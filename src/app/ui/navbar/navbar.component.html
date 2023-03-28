@@ -24,19 +24,19 @@
     <h4 >Notifications</h4>
     <hr>
     <div class="notification-item">
-        <div class="content">
+        <div class="">
             <i style="color: rgb(52, 255, 119);" class="bi bi-check-square-fill"></i> Yassir vient de valider ....
         </div>
 
     </div>
     <div class="notification-item">
-        <div class="content">
+        <div class="">
             <i style="color: rgb(255, 107, 80);" class="bi bi-dash-square-fill"></i> Omar vient de refuser ....
         </div>
 
     </div>
     <div class="notification-item">
-        <div class="content">
+        <div class="">
             <i style="color: rgb(255, 226, 94);" class="bi bi-info-square-fill"></i> L'operation #6726 ....
         </div>
 
@@ -47,7 +47,7 @@
 <div id="user-options-box" *ngIf="userBoxIsOpen">
     <h4 >User section</h4>
     <hr>
-    <div class="user-option-item">
+    <div class="user-option-item"  (click)="navToSettings()">
         <div class="content">
             <i class="bi bi-gear"></i> Settings
         </div>
@@ -67,7 +67,7 @@
      
      
     <div class="side-option-item">
-        <div class="content" style="display: flex;justify-content: center;">
+        <div class="" style="display: flex;justify-content: center;">
             <form [formGroup]="searchInput">
             <input class="search-input" (keypress)="onTyping()" formControlName="search">
         </form>
@@ -78,13 +78,13 @@
     <div class="side-option-item" *ngIf="!menuBoxIsOpen">
         <div class="content" (click)="toggleMenuBox()" >
              
-             menu
+            <i class="bi bi-menu-button"></i> Menu
         </div>
 
     </div>
     <div class="side-option-item">
         <div class="content" (click)="toggleSideNav()">
-            close menu
+            <i class="bi bi-x-lg"></i> Close
         </div>
 
     </div>

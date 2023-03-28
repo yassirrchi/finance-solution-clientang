@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EntiteTiers } from 'src/app/Models/EntiteTiers.model';
+import { ActionService } from 'src/app/Services/action.service';
+import { FundService } from 'src/app/Services/fund.service';
 import { TiersService } from 'src/app/Services/tiers.service';
 import { WalletService } from 'src/app/Services/wallet.service';
+declare let alertify:any;
 
 @Component({
   selector: 'app-operation',
@@ -11,28 +14,36 @@ import { WalletService } from 'src/app/Services/wallet.service';
   styleUrls: ['./operation.component.css']
 })
 export class OperationComponent implements OnInit {
+   
 
   lockForm:boolean=true;
   wallets!:any;
   tiers!:any;
-
   operationForm!:FormGroup;
   montant!:any;
-
+  funds!:any;
   banks!:EntiteTiers[];
   depositaires!:EntiteTiers[];
   contreparties!:EntiteTiers[];
+  operations!:any;
+  showSearch!:boolean
     
 
   
 
    
-  constructor(private walletService:WalletService,private formBuilder: FormBuilder,private router:Router,private tiersService:TiersService) {
+  constructor(private walletService:WalletService,private formBuilder: FormBuilder,private router:Router,private tiersService:TiersService,private fundsService:FundService,private actionService:ActionService) {
+    
+    this.showSearch=false;
     this.operationForm = this.formBuilder.group({
       quantite: [null, Validators.required],
-      prix: [null, Validators.required],
+      price: [null, Validators.required],
+      fundid: [null, Validators.required],
+      walletid: [null, Validators.required],
+      typeop: [null, Validators.required],
+      statut: [null, Validators.required],
+      createdby:sessionStorage.getItem("userId")
 
-       
 
     });
   }
@@ -42,8 +53,8 @@ export class OperationComponent implements OnInit {
      
 
     
-    if(this.operationForm.controls['quantite'].value!=null&&this.operationForm.controls['prix'].value!=null)
-    this.montant=this.operationForm.controls['quantite'].value*this.operationForm.controls['prix'].value
+    if(this.operationForm.controls['quantite'].value!=null&&this.operationForm.controls['price'].value!=null)
+    this.montant=this.operationForm.controls['quantite'].value*this.operationForm.controls['price'].value
     else
     this.montant=null
 
@@ -53,10 +64,30 @@ export class OperationComponent implements OnInit {
 
 
   }
+  handleSearch(){
+    this.showSearch=true
+
+  }
   onsubmit(){
 
-    //alert(this.operationForm.controls['quantite'].value+" "+this.operationForm.controls['prix'].value+" ")
-    this.typing()
+   // alert(this.operationForm.controls['walletid'].value+" "+this.operationForm.controls['price'].value+" ")
+    this.actionService.createOperation(this.operationForm).subscribe((data)=>{
+
+      alertify.success("wallet"+data.code+" ... saved as "+data.status)
+       
+
+
+
+    },(error)=>{
+      console.log(error)
+
+      alertify.error("something went wrong ")
+
+
+
+    })
+    
+    
 
 
   }
@@ -65,7 +96,10 @@ export class OperationComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getAllOperations()
+
     this.wallets=this.walletService.getAllWallets().subscribe((data)=>{this.wallets=data},(error)=>{console.log(error)})
+    this.funds=this.fundsService.getAllFunds().subscribe((data)=>{this.funds=data},(error)=>{console.log(error)})
     
     this.montant=null;
     this.tiers=this.tiersService.getEntiteTiers().subscribe((data)=>{
@@ -93,6 +127,19 @@ export class OperationComponent implements OnInit {
 
   unlockForm(){
     this.lockForm=false
+  }
+
+  getAllOperations(){
+    this.actionService.getAllOperations().subscribe((data)=>{
+      this.operations=data
+
+    },(error)=>{
+      console.log(error)
+
+
+    })
+    
+
   }
 
 

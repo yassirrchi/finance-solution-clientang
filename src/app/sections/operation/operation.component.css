@@ -103,3 +103,14 @@ button{
     cursor: no-drop;
 
 }
+.operations-inner-container{
+    width:90%;
+     
+     
+     
+}
+.operations-outter-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
