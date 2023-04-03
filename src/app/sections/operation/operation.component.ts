@@ -27,6 +27,12 @@ export class OperationComponent implements OnInit {
   contreparties!:EntiteTiers[];
   operations!:any;
   showSearch!:boolean
+  formVisibile!:boolean;
+  pickedOperationId:number=0;
+   
+  detailedOperation!:any;
+
+  showOperationDetails:boolean=false;
     
 
   
@@ -35,6 +41,10 @@ export class OperationComponent implements OnInit {
   constructor(private walletService:WalletService,private formBuilder: FormBuilder,private router:Router,private tiersService:TiersService,private fundsService:FundService,private actionService:ActionService) {
     
     this.showSearch=false;
+    this.formVisibile=true;
+     
+    
+     
     this.operationForm = this.formBuilder.group({
       quantite: [null, Validators.required],
       price: [null, Validators.required],
@@ -46,6 +56,12 @@ export class OperationComponent implements OnInit {
 
 
     });
+  }
+  toggleForm() {
+
+    this.pickedOperationId=0
+    
+    this.formVisibile=!this.formVisibile;
   }
 
   typing(){
@@ -65,6 +81,8 @@ export class OperationComponent implements OnInit {
 
   }
   handleSearch(){
+   // if(this.formVisibile==true)
+    //this.formVisibile=false
     this.showSearch=true
 
   }
@@ -95,6 +113,7 @@ export class OperationComponent implements OnInit {
 
 
   ngOnInit(): void {
+     
 
     this.getAllOperations()
 
@@ -141,6 +160,35 @@ export class OperationComponent implements OnInit {
     
 
   }
+
+  ShowOerationDetail(id:number){
+   
+    
+    
+
+    
+
+  }
+  setPickedOperationId(id:number){
+     
+    this.pickedOperationId=id;
+    this.actionService.getOperation(this.pickedOperationId).subscribe(
+      (data)=>{
+
+        this.detailedOperation=data
+        console.log(this.detailedOperation)
+
+      },(error)=>{
+        console.log(error)
+      })
+     
+
+  
+
+
+
+  }
+
 
 
 }

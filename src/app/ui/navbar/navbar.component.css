@@ -33,6 +33,7 @@ nav{
      
     align-items: center;
     display: flex;
+    
      
 
      
@@ -75,6 +76,7 @@ nav{
     transform: translate(0%,15%);
     background-color: #202020;
     cursor:pointer;
+    
     
      
     margin-right:5px ;
@@ -185,6 +187,7 @@ h4{
     height:98vh;
     color: white;
     border-right: 1px solid orange;
+    z-index: 9999;
 
 }
 #menu-box{
@@ -193,11 +196,12 @@ h4{
     padding-top:10px ; 
     position: absolute;
     left: 2%;
+    
      
      
     top:4%;
     height:fit-content;
-    z-index: 300;
+    z-index: 99991;
 
 }
 .menu-option-item div{

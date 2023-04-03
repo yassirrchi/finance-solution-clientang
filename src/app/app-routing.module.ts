@@ -9,11 +9,13 @@ import { FondComponent } from './sections/fond/fond.component';
 import { DashboardComponent } from './sections/dashboard/dashboard.component';
 import { UsersettingsComponent } from './sections/usersettings/usersettings.component';
  
+ 
 
 const routes: Routes = [
   {path:"",component:DashboardComponent},
   {path:"login",component:UserAuthComponent},
   {path:"operation",component:OperationComponent},
+   
   {path:"tiers",component:TiersComponent},
   {path:"portefeuille",component:PortefeuilleComponent},
   {path:"portefeuille/portefeuilles",component:PortefeuillesComponent},

@@ -9,8 +9,16 @@
 
     <br><br>
     <div class="dashboard-body">
-        <div class="dashboard-body-item tickets"><p>🚧</p></div>
-        <div class="dashboard-body-item analytics"><p>🚧</p></div>
+        <div class="dashboard-body-item tickets">
+            <div class="chart-container line">
+                <canvas  id="MyChart" >{{ chart }}</canvas>
+          </div>
+        </div>
+        <div class="dashboard-body-item analytics">
+            <div class="chart-container pie">
+                <canvas  id="MyChart2" >{{ chart2 }}</canvas>
+          </div>
+        </div>
 
     </div> 
 </div>

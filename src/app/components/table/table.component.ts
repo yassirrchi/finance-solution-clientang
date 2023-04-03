@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -8,6 +8,16 @@ import { Component, Input } from '@angular/core';
 export class TableComponent {
   @Input() wallets:any;
   @Input() operations:any;
+  @Input()
+  ShowOerationDetail!: ((id: number) => void);
+  @Output() operationPickedId = new EventEmitter<number>();
+
+  pickOperationId(id:number){
+    alert(id)
+    this.operationPickedId.emit(id);
+
+  }
+  
   
   
 

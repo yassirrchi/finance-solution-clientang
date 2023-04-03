@@ -1,4 +1,4 @@
-<div class="operation-section">
+<div class="operation-section" >
     <form [formGroup]="operationForm" (ngSubmit)="onsubmit()">
     <div class="operation-tool-bar">
         <div class="input-container">
@@ -23,7 +23,7 @@
     </div>
      
     <div class="operation-options-nav">
-        <div class="option-item">
+        <div class="option-item" (click)="toggleForm()">
             Operation
         </div>
         <div class="option-item">
@@ -32,6 +32,11 @@
         <div class="option-item">
             Evenements
         </div>
+        <div class="option-item">
+            Complement d'operation
+        </div>
+         
+
          
     </div>
 
@@ -52,7 +57,7 @@
 <!-- pricipale option form-->
 
 
-<div *ngIf="true">
+<div *ngIf="formVisibile &&pickedOperationId==0">
 
     <div class="operation-form">
         
@@ -133,7 +138,7 @@
 
 
 
-            <label for="type-operation">Contrepartie:</label>
+            <label for="type-operation">Contrepartie *</label>
   <select id="type-operation" name="type-operation" [disabled]="lockForm">
     <option value=""></option>
      
@@ -171,7 +176,7 @@
 
         <div class="operation-form-section">
 
-            <label for="type-operation">Quantite:</label>
+            <label for="type-operation">Quantite *</label>
            <input type="number"  [disabled]="lockForm" formControlName="quantite" (input)="typing()" >
            <br><br>
 
@@ -195,7 +200,7 @@
 
 
 
-            <label for="type-operation">Prix:</label>
+            <label for="type-operation">Prix *</label>
             <input type="number" [disabled]="lockForm" formControlName="price" (input)="typing()">
   <br><br>
 
@@ -233,12 +238,191 @@
 <!-- end pricipale option form-->
 
 <!-- frais option form-->
+<div *ngIf="pickedOperationId!=0">
+
+    <div class="operation-form" >
+        
+
+
+
+        <div class="operation-form-section bg-2" >
+
+            <label for="type-operation">Type d'operation {{showOperationDetails}}:</label>
+           <select id="type-operation" name="type-operation" [disabled]="lockForm" formArrayName="typeop">
+           <option value="0">Buy Equity Share</option>
+            
+           </select><br><br>
+
+           <label for="fond">Fond:</label>
+           <select id="fond" name="fond" [disabled]="true" formControlName="fundid"  >
+
+           <option selected="selected" >{{detailedOperation.fund.code}} || {{detailedOperation.fund.name}}</option>
+            
+           </select><br><br>
+
+           <label for="compte-entite">Compte entite:</label>
+           <select id="compte-entite" [disabled]="lockForm" name="compte-entite">
+           <option value="compte1">Compte 1</option>
+           <option value="compte2">Compte 2</option>
+           </select><br><br>
+ 
+  <label for="date-operation">Date d'operation:</label>
+  <input type="date" id="date-operation" [disabled]="lockForm" name="date-operation"><br><br>
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section bg-2">
+
+
+
+
+
+
+            <label for="type-operation">Portefeuille:</label>
+            
+  <select id="type-operation" name="type-operation" [disabled]="lockForm" formControlName="walletid">
+     
+     
+    <option value="{{wallet.id}}" *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
+  </select><br><br>
+
+  <label for="fond">Depositaire:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of depositaires">{{tier.code}} ☆  {{tier.name}}</option>
+     
+  </select><br><br>
+
+  <label for="compte-entite">Compte Contrepartie:</label>
+  <select id="compte-entite" name="compte-entite" [disabled]="lockForm">
+    <option value="compte1">Compte 1</option>
+    <option value="compte2">Compte 2</option>
+  </select><br><br>
+
+  <label for="date-operation">Date d'valeur:</label>
+  <input type="date" id="date-operation" name="date-operation" [disabled]="lockForm"><br><br>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section bg-2">
+
+
+
+
+            <label for="type-operation">Contrepartie *</label>
+  <select id="type-operation" name="type-operation" [disabled]="lockForm">
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of contreparties">{{tier.code}} ☆  {{tier.name}}</option>
+  </select><br><br>
+
+  <label for="fond">Intermediaire:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value=""></option>
+     
+    <option  value={{tiers.id}} *ngFor="let tier of banks">{{tier.code}} ☆  {{tier.name}}</option>
+    
+  </select><br><br>
+
+   
+
+
+
+        </div>
+    
+
+    </div>
+
+
+
+
+
+
+    
+
+
+    <div class="operation-form">
+
+
+
+        <div class="operation-form-section">
+
+            <label for="type-operation">Quantite *</label>
+           <input type="number"  [disabled]="lockForm" formControlName="quantite" (input)="typing()" >
+           <br><br>
+
+           <label for="fond">Position:</label>
+           <input type="number" [disabled]="lockForm"><br><br>
+
+            <br><br>
+ 
+  
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+
+
+            <label for="type-operation">Prix *</label>
+            <input type="number" [disabled]="lockForm" formControlName="price" (input)="typing()">
+  <br><br>
+
+  
+
+
+        </div>
+
+
+
+
+
+        <div class="operation-form-section">
+
+
+
+
+            <label for="montant-brut">Montant Brut:</label>
+            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant" ><br><br>
+
+  <label for="fond">Devise:</label>
+  <select id="fond" name="fond" [disabled]="lockForm">
+    <option value="MAD">MAD</option>
+    <option value="USD">USD</option>
+  </select><br><br>
+
+   
+
+
+
+        </div>
+
+    </div>
+</div>
 </form>
 
 
 <div class="operations-outter-container" *ngIf="showSearch">
     <div class="operations-inner-container">
-     <app-table [operations]="operations"></app-table>
+     <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" ></app-table>
     </div>
 </div>
 

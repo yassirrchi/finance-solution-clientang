@@ -21,6 +21,7 @@ import { DashboardComponent } from './sections/dashboard/dashboard.component';
 import { UsersettingsComponent } from './sections/usersettings/usersettings.component';
 import { OperationsTableComponent } from './components/operations-table/operations-table.component';
  
+ 
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { OperationsTableComponent } from './components/operations-table/operatio
     DashboardComponent,
     UsersettingsComponent,
     OperationsTableComponent,
+    
      
   ],
   imports: [

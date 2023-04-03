@@ -38,4 +38,9 @@ export class ActionService {
     return this.http.get<any>("http://localhost:4500/api/v1/operationnote/all")
 
   }
+  getOperation(id:number):Observable<any>{
+
+    return this.http.get<any>("http://localhost:4500/api/v1/operationnote/"+id)
+
+  }
 }
