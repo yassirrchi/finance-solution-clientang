@@ -14,7 +14,7 @@
         </div>
     </div>
     <div id="notifications-user">
-        <div class="notifications" (click)="toggleNotificationBox()"><i class="bi bi-bell-fill white-item" ></i><span class="notification-count" >3</span></div>
+        <div class="notifications" (click)="toggleNotificationBox()"><i class="bi bi-bell-fill white-item" ></i><span class="notification-count" *ngIf="notifications.length>0" >{{notifications.length}}</span></div>
         <div class="user  " (click)="toggleUserBox()"><span class="white-item" >{{username}} </span> <i class="bi bi-person-circle " style="font-size: large;color:orange"></i></div>
     </div>
 
@@ -23,24 +23,13 @@
 <div id="notifications-box" *ngIf="notificationBoxIsOpen">
     <h4 >Notifications</h4>
     <hr>
-    <div class="notification-item">
+    <div class="notification-item" *ngFor="let notification of notifications">
         <div class="">
-            <i style="color: rgb(52, 255, 119);" class="bi bi-check-square-fill"></i> Yassir vient de valider ....
+            <i style="color: rgb(52, 255, 119);" class="bi bi-check-square-fill"></i> {{notification.testMessage}}
         </div>
 
     </div>
-    <div class="notification-item">
-        <div class="">
-            <i style="color: rgb(255, 107, 80);" class="bi bi-dash-square-fill"></i> Omar vient de refuser ....
-        </div>
-
-    </div>
-    <div class="notification-item">
-        <div class="">
-            <i style="color: rgb(255, 226, 94);" class="bi bi-info-square-fill"></i> L'operation #6726 ....
-        </div>
-
-    </div>
+     
 
 </div>
 

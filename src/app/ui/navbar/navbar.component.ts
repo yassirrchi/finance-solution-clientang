@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { MenuOption } from 'src/app/Models/wallet.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { NotificationsService } from 'src/app/Services/notifications.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -30,9 +31,11 @@ export class NavbarComponent implements OnInit {
     ,
     {name:"Dashboard",route:"/",path:"autres>config"}
 
+
 ]
+notifications:any={};
   searchInput!:FormGroup;
-  constructor(private location: Location,private router:Router,private formBuilder: FormBuilder) {
+  constructor(private location: Location,private router:Router,private formBuilder: FormBuilder,private notificationService:NotificationsService) {
     this.searchInput = this.formBuilder.group({
       search: [''],
       
@@ -43,6 +46,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.setUser()
     
      
@@ -54,6 +58,7 @@ export class NavbarComponent implements OnInit {
     this.menuBoxIsOpen=false;
     this.openedWindows=[];
     this.allMenuOptions=this.defaultOptions
+    this.fetchNewNotifications()
   }
   toggleNotificationBox(){
     this.notificationBoxIsOpen?this.userBoxIsOpen=false:this.userBoxIsOpen=false;
@@ -109,6 +114,22 @@ export class NavbarComponent implements OnInit {
   }
   navToSettings(){
     this.router.navigateByUrl("/user/settings")
+
+  }
+  fetchNewNotifications(){
+    setInterval(()=>{
+      this.getAllNotifications();
+       
+    },4000)
+  }
+  getAllNotifications(){
+    this.notificationService.getAllNotifications().subscribe((data)=>{
+
+      this.notifications=data;
+      console.log(this.notifications)
+    },(error)=>{
+      alert(2)
+    })
 
   }
 
