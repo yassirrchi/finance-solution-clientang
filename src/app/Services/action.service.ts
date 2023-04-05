@@ -12,18 +12,22 @@ export class ActionService {
 
   createOperation(operationForm:FormGroup):Observable<any>{
     //const data={username,password,role}
-   
+    
 
   
     let data=
     {fundid:operationForm.controls['fundid'].value,
+    op_type:operationForm.controls['typeop'].value,
+    status:operationForm.controls['statut'].value,
      
     walletid:operationForm.controls['walletid'].value,
     quantity:operationForm.controls['quantite'].value,
     price:operationForm.controls['price'].value,
      
-    typeop:operationForm.controls['typeop'].value,
-    createdby:operationForm.controls['createdby'].value
+     
+    createdby:operationForm.controls['createdby'].value,
+    op_date:operationForm.controls['date_op'].value,
+    val_date:operationForm.controls['date_val'].value
      
   
   }

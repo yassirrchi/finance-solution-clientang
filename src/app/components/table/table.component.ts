@@ -11,12 +11,21 @@ export class TableComponent {
   @Input()
   ShowOerationDetail!: ((id: number) => void);
   @Output() operationPickedId = new EventEmitter<number>();
+  @Output() open = new EventEmitter<boolean>();
+
+  openDetail(){
+
+    this.open.emit(true);
+
+  }
+  
 
   pickOperationId(id:number){
-    alert(id)
+     
     this.operationPickedId.emit(id);
 
   }
+  
   
   
   

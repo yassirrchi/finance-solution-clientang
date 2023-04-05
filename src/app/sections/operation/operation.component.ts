@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EntiteTiers } from 'src/app/Models/EntiteTiers.model';
@@ -33,6 +33,7 @@ export class OperationComponent implements OnInit {
   detailedOperation!:any;
 
   showOperationDetails:boolean=false;
+  displayDetails:boolean=false;
     
 
   
@@ -50,6 +51,8 @@ export class OperationComponent implements OnInit {
       price: [null, Validators.required],
       fundid: [null, Validators.required],
       walletid: [null, Validators.required],
+      date_val:[null,Validators.required],
+      date_op:[null,Validators.required],
       typeop: [null, Validators.required],
       statut: [null, Validators.required],
       createdby:sessionStorage.getItem("userId")
@@ -89,9 +92,11 @@ export class OperationComponent implements OnInit {
   onsubmit(){
 
    // alert(this.operationForm.controls['walletid'].value+" "+this.operationForm.controls['price'].value+" ")
+    
     this.actionService.createOperation(this.operationForm).subscribe((data)=>{
 
-      alertify.success("wallet"+data.code+" ... saved as "+data.status)
+       
+      alertify.message("✔️ Operation creer ")
        
 
 
@@ -99,13 +104,19 @@ export class OperationComponent implements OnInit {
     },(error)=>{
       console.log(error)
 
-      alertify.error("something went wrong ")
+      
+      alertify.message("❌ Operation non creer (verifier votre connexion📡ou serveur) ")
+
 
 
 
     })
     
+     
     
+
+   
+   
 
 
   }
@@ -188,6 +199,18 @@ export class OperationComponent implements OnInit {
 
 
   }
+  displayOperationDetails(display:any){
+
+    
+    
+       
+    
+     
+    this.displayDetails=display
+  }
+   
+  
+  
 
 
 

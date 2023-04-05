@@ -33,12 +33,15 @@
         <thead>
           <tr>
             <th>Reference</th>
-            <th>Statut Applicatif</th>
             <th>Type d'operation</th>
-            <th>Portefeuille</th>
-            <th>Fond</th>
+            <th>Statut Applicatif</th>
+            
+            
+            
             <th>Quantite</th>
             <th>Prix</th>
+            <th>Montant brut</th>
+            <th>Portefeuille</th>
             <th>Devise</th>
             <th>Date</th>
             <th>Creer par</th>
@@ -50,20 +53,24 @@
            
           <tr *ngFor="let operation of operations"   >
             <td>{{operation.id}}</td>
-            <td>{{operation.wallet.code}}</td>
-            <td>{{operation.fund.code}}</td>
+            <td><i *ngIf="operation.type=='BUY_EQUITY'" style="color: rgb(87, 255, 101);" class="bi bi-file-earmark-bar-graph-fill"></i>
+              <i *ngIf="operation.type=='SELL_EQUITY'" style="color: rgb(255, 98, 87);" class="bi bi-file-earmark-bar-graph-fill"></i> 
+              {{operation.type}}</td>
+            <td><i *ngIf="operation.status=='SUBMIT'" style="color: rgb(87, 255, 101);" class="bi bi-send-check"></i>
+              <i *ngIf="operation.status=='DRAFT'" style="color: rgb(187, 187, 187);" class="bi bi-send-exclamation"></i>
+             </td>
             <td>{{operation.quantity}}</td>
             <td>{{operation.price}}</td>
             <td>{{operation.gross_amount}}</td>
-            <td><i class="bi bi-dash-circle" style="color: rgb(255, 93, 93);" ></i><i class="bi bi-check-circle" style="color: rgb(81, 255, 139);"  *></i></td>
+            <td>{{operation.wallet.code+'|'+operation.wallet.name}} <button>check</button></td>
             
-            <td><i class="bi bi-clipboard2-check"  style="color: rgb(124, 124, 124);"></i></td>
+            <td>MAD</td>
             
             <td><button>Visualisez Les entites tiers</button></td>
              
             <td></td>
            
-            <td><button (click)="pickOperationId(operation.id)"><i class="bi bi-eye-fill"></i></button><button><i class="bi bi-pencil-square"></i></button><button><i class="bi bi-archive-fill"></i></button></td>
+            <td><button (click)="openDetail()" ><i class="bi bi-eye-fill"></i></button><button (click)="pickOperationId(operation.id)"><i class="bi bi-pencil-square" ></i></button><button><i class="bi bi-archive-fill"></i></button></td>
              
 
           </tr>

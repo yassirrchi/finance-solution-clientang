@@ -13,8 +13,8 @@
             <button type="submit" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"><i class="bi bi-file-earmark-check"></i></button>
             <select class="operation-status" formControlName="statut" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"  >
               
-                <option class="draft">draft</option>
-                <option>submit</option>
+                <option value="0" class="draft">draft</option>
+                <option value="1">submit</option>
             </select>
             
 
@@ -32,7 +32,7 @@
         <div class="option-item">
             Evenements
         </div>
-        <div class="option-item">
+        <div class="option-item" (click)="displayOperationDetails(true)">
             Complement d'operation
         </div>
          
@@ -67,7 +67,7 @@
         <div class="operation-form-section">
 
             <label for="type-operation">Type d'operation:</label>
-           <select id="type-operation" name="type-operation" [disabled]="lockForm" formArrayName="typeop">
+           <select id="type-operation" name="type-operation" [disabled]="lockForm" formControlName="typeop">
            <option value="0">Buy Equity Share</option>
            <option value="1">Sell Equity Share</option>
            </select><br><br>
@@ -85,7 +85,7 @@
            </select><br><br>
  
   <label for="date-operation">Date d'operation:</label>
-  <input type="date" id="date-operation" [disabled]="lockForm" name="date-operation"><br><br>
+  <input type="date" id="date-operation" [disabled]="lockForm" name="date-operation" formControlName="date_op"><br><br>
 
         </div>
 
@@ -123,7 +123,7 @@
   </select><br><br>
 
   <label for="date-operation">Date d'valeur:</label>
-  <input type="date" id="date-operation" name="date-operation" [disabled]="lockForm"><br><br>
+  <input type="date" id="date-operation" name="date-operation" [disabled]="lockForm" formControlName="date_val"><br><br>
 
 
 
@@ -235,10 +235,11 @@
 
     </div>
 </div>
-<!-- end pricipale option form-->
+<!--             UPPPDDATE-->  
 
-<!-- frais option form-->
+ 
 <div *ngIf="pickedOperationId!=0">
+  <h2 style="background-color: orange; color: black;"><i class="bi bi-pencil-square"></i> operation code:#{{detailedOperation.id}} | created by: {{detailedOperation.createdby.username}}<i class="bi bi-person-fill"></i>  </h2>
 
     <div class="operation-form" >
         
@@ -247,18 +248,14 @@
 
         <div class="operation-form-section bg-2" >
 
-            <label for="type-operation">Type d'operation {{showOperationDetails}}:</label>
-           <select id="type-operation" name="type-operation" [disabled]="lockForm" formArrayName="typeop">
-           <option value="0">Buy Equity Share</option>
-            
-           </select><br><br>
+            <label for="type-operation">Type d'operation </label>
+           <input type="text" value="{{detailedOperation.type}}" disabled >
+            <br><br>
 
            <label for="fond">Fond:</label>
-           <select id="fond" name="fond" [disabled]="true" formControlName="fundid"  >
+           <input type="text" value="{{detailedOperation.fund.code+'|'+detailedOperation.fund.name}}" disabled >
 
-           <option selected="selected" >{{detailedOperation.fund.code}} || {{detailedOperation.fund.name}}</option>
-            
-           </select><br><br>
+           <br><br>
 
            <label for="compte-entite">Compte entite:</label>
            <select id="compte-entite" [disabled]="lockForm" name="compte-entite">
@@ -267,7 +264,7 @@
            </select><br><br>
  
   <label for="date-operation">Date d'operation:</label>
-  <input type="date" id="date-operation" [disabled]="lockForm" name="date-operation"><br><br>
+  <input type="text" id="date-operation" name="date-operation" value="{{detailedOperation.op_date}}" disabled><br><br>
 
         </div>
 
@@ -284,11 +281,7 @@
 
             <label for="type-operation">Portefeuille:</label>
             
-  <select id="type-operation" name="type-operation" [disabled]="lockForm" formControlName="walletid">
-     
-     
-    <option value="{{wallet.id}}" *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
-  </select><br><br>
+            <input type="text"  name="date-operation" value="{{detailedOperation.wallet.code+'|'+detailedOperation.wallet.name }}" disabled><br><br>
 
   <label for="fond">Depositaire:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
@@ -305,7 +298,7 @@
   </select><br><br>
 
   <label for="date-operation">Date d'valeur:</label>
-  <input type="date" id="date-operation" name="date-operation" [disabled]="lockForm"><br><br>
+  <input type="text" id="date-operation" name="date-operation" value="{{detailedOperation.val_date}}" disabled><br><br>
 
 
 
@@ -352,14 +345,14 @@
     
 
 
-    <div class="operation-form">
+    <div class="operation-form bg-2">
 
 
 
         <div class="operation-form-section">
 
             <label for="type-operation">Quantite *</label>
-           <input type="number"  [disabled]="lockForm" formControlName="quantite" (input)="typing()" >
+           <input type="number"  value="{{detailedOperation.quantity}}" formControlName="quantite" (input)="typing()">
            <br><br>
 
            <label for="fond">Position:</label>
@@ -375,7 +368,7 @@
 
 
 
-        <div class="operation-form-section">
+        <div class="operation-form-section bg-2">
 
 
 
@@ -383,7 +376,7 @@
 
 
             <label for="type-operation">Prix *</label>
-            <input type="number" [disabled]="lockForm" formControlName="price" (input)="typing()">
+            <input type="number" [disabled]="lockForm" formControlName="price" (input)="typing() " value="{{detailedOperation.price}}">
   <br><br>
 
   
@@ -401,7 +394,7 @@
 
 
             <label for="montant-brut">Montant Brut:</label>
-            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant" ><br><br>
+            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant" value="{{detailedOperation.gross_amount}}" ><br><br>
 
   <label for="fond">Devise:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
@@ -422,9 +415,10 @@
 
 <div class="operations-outter-container" *ngIf="showSearch">
     <div class="operations-inner-container">
-     <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" ></app-table>
+     <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" (open)="displayOperationDetails($event)" ></app-table>
     </div>
 </div>
+<app-details *ngIf="displayDetails"  (closed)="displayOperationDetails($event)"></app-details>
 
 </div>
 
