@@ -85,6 +85,12 @@ nav{
     background-color:orange ;
     color: white;
  }
+ .activeMenuItem{
+    background-color:orange ;
+    color: white;
+
+ }
+ 
 
 #notifications-user{
     width: 20%;

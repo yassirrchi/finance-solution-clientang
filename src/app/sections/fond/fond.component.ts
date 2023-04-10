@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { FundService } from 'src/app/Services/fund.service';
+declare let alertify:any;
 @Component({
   selector: 'app-fond',
   templateUrl: './fond.component.html',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class FondComponent {
   fondForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private router:Router) {
+  constructor(private formBuilder: FormBuilder,private router:Router,private fundService:FundService) {
     this.fondForm = this.formBuilder.group({
       code: ['', Validators.required],
       name: ['', [Validators.required]],
@@ -30,8 +31,23 @@ export class FondComponent {
     this.lockForm=false
   }
   onsubmit(){
-    alert(this.fondForm.controls['code'].value+" "+this.fondForm.controls['name'].value+" "+this.fondForm.controls['active'].value+this.fondForm.controls['external_code'].value)
-     
+
+    this.fundService.createFund(this.fondForm).subscribe((data)=>{
+
+      alertify.message("fund cree ✔️  ")
+      
+
+
+
+    },(error)=>{
+      console.log(error)
+
+      alertify.error("something went wrong ")
+
+
+
+    })
+      
      
 
   }

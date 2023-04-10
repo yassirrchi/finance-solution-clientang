@@ -53,7 +53,7 @@ public chart2: any;
           backgroundColor: [
             'orange',
             'gray',
-            'blue'
+            '#00008b'
           ],
           hoverOffset: 4
         }]

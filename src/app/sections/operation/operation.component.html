@@ -3,12 +3,15 @@
     <div class="operation-tool-bar">
         <div class="input-container">
             <input type="text" placeholder="Search...">
-            <button (click)="handleSearch()" type="button"><i class="bi bi-search"></i></button>
-            <button   (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
-            <i class="bi bi-lock"  *ngIf="lockForm" style="color: orange;"></i>
-            <i class="bi bi-unlock" *ngIf="!lockForm" style="color: orange;"></i>
+            <button  type="button" *ngIf="showSearch"><i class="bi bi-search" ></i></button>
+
+
+            <button (click)="handleSearch()" type="button"><i class="bi bi-search" *ngIf="!showSearch"></i><i class="bi bi-journal-plus" *ngIf="showSearch"></i></button>
+            <button *ngIf="!showSearch"   (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+            <i class="bi bi-lock"  *ngIf="lockForm &&!showSearch" style="color: orange;"></i>
+            <i class="bi bi-unlock" *ngIf="!lockForm && !showSearch" style="color: orange;"></i>
         </div>
-        <div class="operation-control">
+        <div class="operation-control" *ngIf="!showSearch" >
             
             <button type="submit" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"><i class="bi bi-file-earmark-check"></i></button>
             <select class="operation-status" formControlName="statut" [disabled]="lockForm" [ngClass]="{'disabled-save-button':lockForm}"  >
@@ -23,7 +26,7 @@
     </div>
      
     <div class="operation-options-nav">
-        <div class="option-item" (click)="toggleForm()">
+        <div class="option-item" (click)="handleSearch()">
             Operation
         </div>
         <div class="option-item">
@@ -57,7 +60,7 @@
 <!-- pricipale option form-->
 
 
-<div *ngIf="formVisibile &&pickedOperationId==0">
+<div *ngIf="formVisibile &&pickedOperationId==0 &&!showSearch">
 
     <div class="operation-form">
         

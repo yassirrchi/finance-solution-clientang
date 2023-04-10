@@ -86,7 +86,8 @@ export class OperationComponent implements OnInit {
   handleSearch(){
    // if(this.formVisibile==true)
     //this.formVisibile=false
-    this.showSearch=true
+    
+    this.showSearch=!this.showSearch
 
   }
   onsubmit(){
@@ -138,9 +139,9 @@ export class OperationComponent implements OnInit {
       this.tiers=data;
       this.banks=this.tiers.filter((tiers: { bank: boolean; })=>tiers.bank==true)
   // console.log(this.banks)
-    this.depositaires=this.tiers.filter((tiers: { counterparty: boolean; })=>tiers.counterparty==true)
+    this.depositaires=this.tiers.filter((tiers: { custodian: boolean; })=>tiers.custodian==true)
    // console.log(this.depositaires)
-    this.contreparties=this.tiers.filter((tiers: { custodian: boolean; })=>tiers.custodian==true)
+    this.contreparties=this.tiers.filter((tiers: { counterparty: boolean; })=> tiers.counterparty==true)
     console.log(this.contreparties)
     
       

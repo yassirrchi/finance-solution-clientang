@@ -6,7 +6,7 @@
         </div>
         <div class="Menu-opened-windows"> 
              
-                <div *ngFor="let item of openedWindows" class="OpenedMenuItems" (click)="navigate(item.route)">
+                <div *ngFor="let item of openedWindows" class="OpenedMenuItems"  [ngClass]="{'activeMenuItem': item.active}" (click)="navigate(item)">
                     {{item.name}}
                 </div>
             
