@@ -12,11 +12,17 @@ export class TableComponent {
   @Input()
   ShowOerationDetail!: ((id: number) => void);
   @Output() operationPickedId = new EventEmitter<number>();
+  @Output() showingType=new EventEmitter<string>();
   @Output() open = new EventEmitter<boolean>();
+  //W:WALLET, O:OPERATION, F:FUND, T tiers
+  
 
-  openDetail(){
+  openDetail(id:number,type:string){
 
     this.open.emit(true);
+    this.operationPickedId.emit(id);
+    this.showingType.emit(type)
+    
 
   }
   

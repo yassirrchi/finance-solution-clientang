@@ -65,9 +65,9 @@
             <td>{{operation.quantity}}</td>
             <td>{{operation.price}}</td>
             <td>{{operation.gross_amount}}</td>
-            <td>{{operation.wallet.code+'|'+operation.wallet.name}} <button><i class="bi bi-eye-fill"></i></button></td>
-            <td>{{operation.fund.code+'|'+operation.fund.name}} <button><i class="bi bi-eye-fill"></i></button></td>
-            <td>{{operation.thirdPartyEntities.length}} <button><i class="bi bi-eye-fill"></i></button></td>
+            <td>{{operation.wallet.code+'|'+operation.wallet.name}} <button type="button" (click)="openDetail(operation.id,'w')"><i class="bi bi-eye-fill"></i></button></td>
+            <td>{{operation.fund.code+'|'+operation.fund.name}} <button (click)="openDetail(operation.id,'f')" type="button"><i class="bi bi-eye-fill"></i></button></td>
+            <td>{{operation.thirdPartyEntities.length}} <button (click)="openDetail(operation.id,'t')" type="button"><i class="bi bi-eye-fill"></i></button></td>
 
             
             <td>MAD</td>
@@ -77,7 +77,7 @@
              
             <td>{{operation.createdby.username}}</td>
            
-            <td><button (click)="openDetail()" ><i class="bi bi-zoom-in"></i></button><button (click)="pickOperationId(operation.id)"><i class="bi bi-pencil-square" ></i></button><button><i class="bi bi-archive-fill"></i></button></td>
+            <td><button (click)="openDetail(operation.id,'o')"  type="button" ><i class="bi bi-zoom-in"></i></button><button type="button" (click)="pickOperationId(operation.id)"><i class="bi bi-pencil-square" ></i></button><button type="button"><i class="bi bi-archive-fill"></i></button></td>
              
 
           </tr>

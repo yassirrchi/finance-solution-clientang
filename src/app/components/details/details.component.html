@@ -1,7 +1,16 @@
 <div class="detail-container" >
     <button class="close-btn" (click)="closeDetail()">X</button>
-    <div class="detail">
-        <h1>🚧 details d'operation, (summary)</h1>
+    <div class="detail op-display">
+        <h1>{{operation.quantity}} details d'operation, (summary) {{type}}</h1>
+        <div class="fund-detail">
+            <h3>{{operation.fund.code}}</h3>
+
+        </div>
+
+
+
+
     </div>
 
+ 
 </div>

@@ -29,6 +29,7 @@ export class OperationComponent implements OnInit {
   showSearch!:boolean
   formVisibile!:boolean;
   pickedOperationId:number=0;
+  typeOfDetail:string="o";
    
   detailedOperation!:any;
 
@@ -216,6 +217,11 @@ export class OperationComponent implements OnInit {
   }
   handleShowForm(){
     this.showSearch=false
+
+  }
+  setShowingType(type:string){
+    this.typeOfDetail=type;
+    
 
   }
    

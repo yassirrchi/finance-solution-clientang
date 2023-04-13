@@ -10,7 +10,10 @@ export class DetailsComponent {
   @Output() showModal=new EventEmitter<boolean>();
   @Output() closed = new EventEmitter<boolean>();
   @Input() inputData:any
+  @Input() operation:any //i can use types and instance of instead
   //type tiers[] or operationNote or wallet or fond
+  @Input() type!:string;
+  
 
   closeDetail(){
 

@@ -241,7 +241,7 @@
 <!--             UPPPDDATE-->  
 <div class="operations-outter-container" *ngIf="showSearch">
   <div class="operations-inner-container">
-   <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" (open)="displayOperationDetails($event)" ></app-table>
+   <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" (showingType)="setShowingType($event)" (open)="displayOperationDetails($event)" ></app-table>
   </div>
 </div>
 
@@ -424,7 +424,7 @@
 
 
 
-<app-details *ngIf="displayDetails"  (closed)="displayOperationDetails($event)"></app-details>
+<app-details *ngIf="displayDetails" [operation]="detailedOperation" [type]="typeOfDetail"  (closed)="displayOperationDetails($event)" ></app-details>
 
 </div>
 

@@ -1,6 +1,7 @@
 .detail-container{
-    height: 100vh;
+    height: 100%;
     background-color: rgb(255, 121, 31,0.6);
+    
      
      
 
@@ -14,14 +15,25 @@
 }
 .detail{
     background-color: rgb(44, 44, 44);
-    height: 80%;
-    width: 80%;
+    color: white;
+    height: 90%;
+    width: 90%;
     
+}
+.fund-detail{
+    background-color: rgb(255, 0, 0);
+    width: 300px;
+    height: 300px;
 }
 .close-btn{
     position: absolute;
-    top:10%;
-    left:89%;
+    top:5%;
+    left:94%;
     background-color: orange;
     padding:5px;
+}
+.op-display{
+    
+
+
 }
