@@ -83,7 +83,7 @@ button{
     transform: translate(0%,30%);
     background-color: #242424;
     color: white;
-    cursor: no-drop;
+      
     color: orange;
 
 }
@@ -116,6 +116,39 @@ button{
     justify-content: center;
 }
 .bg-2{
-    background-color: rgb(126, 71, 0);
+    background-color: rgb(0, 0, 0);
+    
 
+}
+.edit-operation-header{
+
+  background-color: rgb(29, 63, 35); color: white;  
+   
+}
+.edit-operation-header-draft{
+    background-color: #242424;
+    color: white;
+
+}
+.edit-operation-header-draft i{
+     
+    color: orange;
+
+}
+.edit-operation-header i{
+    color:orange
+}
+ h2{
+    text-align: center;
+    padding: 10px 5px;
+    font-size: medium;
+    
+}
+.edit-header-controls{
+    display: flex;
+    justify-content: center;
+}
+.edit-header-controls button{
+    width: 200px;
+    color: grey;
 }

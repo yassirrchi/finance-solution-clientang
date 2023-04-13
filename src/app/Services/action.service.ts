@@ -11,6 +11,7 @@ export class ActionService {
   constructor(private http:HttpClient) { }
 
   createOperation(operationForm:FormGroup):Observable<any>{
+    
     //const data={username,password,role}
     
 
@@ -23,6 +24,7 @@ export class ActionService {
     walletid:operationForm.controls['walletid'].value,
     quantity:operationForm.controls['quantite'].value,
     price:operationForm.controls['price'].value,
+    gamount:operationForm.controls['quantite'].value*operationForm.controls['price'].value,
      
      
     createdby:operationForm.controls['createdby'].value,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -9,6 +9,8 @@ export class DetailsComponent {
   
   @Output() showModal=new EventEmitter<boolean>();
   @Output() closed = new EventEmitter<boolean>();
+  @Input() inputData:any
+  //type tiers[] or operationNote or wallet or fond
 
   closeDetail(){
 

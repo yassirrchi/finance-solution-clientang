@@ -26,7 +26,7 @@
     </div>
      
     <div class="operation-options-nav">
-        <div class="option-item" (click)="handleSearch()">
+        <div class="option-item" (click)="handleShowForm()">
             Operation
         </div>
         <div class="option-item">
@@ -60,7 +60,7 @@
 <!-- pricipale option form-->
 
 
-<div *ngIf="formVisibile &&pickedOperationId==0 &&!showSearch">
+<div *ngIf="formVisibile &&!showSearch">
 
     <div class="operation-form">
         
@@ -105,7 +105,7 @@
 
             <label for="type-operation">Portefeuille:</label>
             
-  <select id="type-operation" name="type-operation" [disabled]="lockForm" formControlName="walletid">
+  <select id="type-operation" name="type-operation" [disabled]="true" formControlName="walletid">
      
      
     <option value="{{wallet.id}}" *ngFor="let wallet of wallets">{{wallet.code}} ☆  {{wallet.name}}</option>
@@ -173,7 +173,7 @@
     
 
 
-    <div class="operation-form">
+    <div class="operation-form bg-2">
 
 
 
@@ -222,7 +222,7 @@
 
 
             <label for="montant-brut">Montant Brut:</label>
-            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant" ><br><br>
+            <input id="montant-brut" type="number" [disabled]="lockForm" readonly [value]="montant"  ><br><br>
 
   <label for="fond">Devise:</label>
   <select id="fond" name="fond" [disabled]="lockForm">
@@ -239,11 +239,18 @@
     </div>
 </div>
 <!--             UPPPDDATE-->  
+<div class="operations-outter-container" *ngIf="showSearch">
+  <div class="operations-inner-container">
+   <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" (open)="displayOperationDetails($event)" ></app-table>
+  </div>
+</div>
 
  
-<div *ngIf="pickedOperationId!=0">
-  <h2 style="background-color: orange; color: black;"><i class="bi bi-pencil-square"></i> operation code:#{{detailedOperation.id}} | created by: {{detailedOperation.createdby.username}}<i class="bi bi-person-fill"></i>  </h2>
-
+<div *ngIf="pickedOperationId!=0&&showSearch">
+  <div   [ngClass]="detailedOperation.status=='SUBMIT' ? 'edit-operation-header' : 'edit-operation-header-draft'" >
+  <h2 > <i class="bi bi-card-text"></i>: {{detailedOperation.id}} <i class="bi bi-person-fill"></i> : {{detailedOperation.createdby.username}} </h2>
+  <div class="edit-header-controls" ><button    style="color:black">Confirmer la modification<i class="bi bi-pencil-square" style="color:black"></i></button><select *ngIf="detailedOperation.status!=='SUBMIT'"><option></option></select></div>
+</div>
     <div class="operation-form" >
         
 
@@ -352,7 +359,7 @@
 
 
 
-        <div class="operation-form-section">
+        <div class="operation-form-section bg-2">
 
             <label for="type-operation">Quantite *</label>
            <input type="number"  value="{{detailedOperation.quantity}}" formControlName="quantite" (input)="typing()">
@@ -391,7 +398,7 @@
 
 
 
-        <div class="operation-form-section">
+        <div class="operation-form-section bg-2">
 
 
 
@@ -416,11 +423,7 @@
 </form>
 
 
-<div class="operations-outter-container" *ngIf="showSearch">
-    <div class="operations-inner-container">
-     <app-table [operations]="operations" [ShowOerationDetail]="ShowOerationDetail" (operationPickedId)="setPickedOperationId($event)" (open)="displayOperationDetails($event)" ></app-table>
-    </div>
-</div>
+
 <app-details *ngIf="displayDetails"  (closed)="displayOperationDetails($event)"></app-details>
 
 </div>

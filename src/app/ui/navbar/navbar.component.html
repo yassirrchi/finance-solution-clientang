@@ -86,11 +86,25 @@
      
      
      
-    <div class="menu-option-item" *ngFor="let menuOption of  allMenuOptions " >
-        <div class="content"   (click)="openingAMenu(menuOption)">
+    <div class="menu-option-item lv1menu"  *ngFor="let menuOption of  allMenuOptions " >
+        <div class="content"    >
 
-            <h4>{{menuOption.name}}</h4>
-            <p>{{menuOption.path}}</p>
+             
+            <details>
+                <summary>{{menuOption.name}}</summary>
+                <div class="menu-option-item submenu submenu-item" *ngFor="let menuOption of  menuOption.subMenu " >
+                    <div class="  submenu-item"   (click)="openingAMenu(menuOption)">
+            
+                        <h4>{{menuOption.name}}</h4>
+                        <p>{{menuOption.path}}</p>
+                         
+                        
+                    </div>
+            
+                </div>
+
+                 
+            </details>
             
         </div>
 

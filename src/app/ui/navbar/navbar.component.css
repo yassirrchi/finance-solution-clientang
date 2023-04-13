@@ -214,9 +214,9 @@ h4{
     padding: 6px;
 
 }
-.menu-option-item div:hover{
+.lv1menu div:hover{
     
-     background-color: #535353;
+     background-color: #3b3b3b;
 }
 
 .menu-option-item  p{
@@ -228,3 +228,17 @@ h4{
 .menu-option-item p{
     color: orange;
 }
+.submenu{
+     
+    background-color: rgb(78, 78, 78);
+    position: relative;
+     
+}
+summary{
+    color: orange;
+    text-align: left;
+}
+details>div{
+    text-align: center;
+}
+ 

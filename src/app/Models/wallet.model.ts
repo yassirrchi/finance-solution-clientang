@@ -3,4 +3,5 @@ export interface MenuOption {
     route: string;
     path: string;
     active:boolean
+    subMenu:MenuOption[]
   }

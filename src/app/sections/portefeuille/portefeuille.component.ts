@@ -11,6 +11,7 @@ declare let alertify:any;
 })
 export class PortefeuilleComponent {
   walletForm: FormGroup;
+  showSearch:boolean=false;
 
   constructor(private formBuilder: FormBuilder,private walletService:WalletService,private router:Router) {
     this.walletForm = this.formBuilder.group({
@@ -31,13 +32,16 @@ export class PortefeuilleComponent {
   unlockForm(){
     this.lockForm=false
   }
+
+  showSearchSection(){
+    this.showSearch=!this.showSearch
+  }
   onsubmit(){
     //alert(this.walletForm.controls['code'].value+" "+this.walletForm.controls['name'].value+" "+this.walletForm.controls['active'].value+this.walletForm.controls['external_code'].value+this.walletForm.controls['status'].value)
     this.walletService.createWallet(this.walletForm).subscribe((data)=>{
 
       alertify.success("wallet"+data.code+" ... saved as "+data.status)
-      this.router.navigateByUrl("/portefeuille/portefeuilles")
-
+ 
 
 
     },(error)=>{

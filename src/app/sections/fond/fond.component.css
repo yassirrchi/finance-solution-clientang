@@ -72,4 +72,12 @@ hr {
     background-color: orange;
     margin: 20px 0;
   }
- 
+ .act-ext>input{
+    background-color: #343434;
+    
+
+
+ }
+ .act-ext>input{
+    margin: 0px 30px;
+ }

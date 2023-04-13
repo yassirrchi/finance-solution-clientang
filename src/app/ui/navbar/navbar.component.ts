@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MenuOption } from 'src/app/Models/wallet.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NotificationsService } from 'src/app/Services/notifications.service';
+import { MenuService } from 'src/app/Services/menu.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -19,23 +20,10 @@ export class NavbarComponent implements OnInit {
   openedWindows!:MenuOption[]
   allMenuOptions!:MenuOption[]
   username!:any;
-  defaultOptions:MenuOption[]=[
-    {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles",active:true},
-    {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre",active:true},
-    {name:"Perimetre",route:"/tiers",path:"autres>config",active:true},
-    {name:"Menu/Roles",route:"/tiers",path:"autres>config",active:true},
-    {name:"Entite Tiers",route:"/tiers",path:"autres>config",active:true},
-    {name:"Portefeuilles",route:"/portefeuille/portefeuilles",path:"autres>config",active:true},
-    {name:"Fond",route:"/fond",path:"autres>config",active:true},
-    {name:"Dashboard",route:"/",path:"autres>config",active:true}
-    ,
-    {name:"Dashboard",route:"/",path:"autres>config",active:true}
-
-
-]
+  defaultOptions!:MenuOption[];
 notifications:any={};
   searchInput!:FormGroup;
-  constructor(private location: Location,private router:Router,private formBuilder: FormBuilder,private notificationService:NotificationsService) {
+  constructor(private location: Location,private router:Router,private formBuilder: FormBuilder,private notificationService:NotificationsService,private menuService:MenuService) {
     this.searchInput = this.formBuilder.group({
       search: [''],
       
@@ -46,6 +34,7 @@ notifications:any={};
 
 
   ngOnInit(): void {
+    this.getAllMenuOptions()
     
     this.setUser()
     
@@ -146,6 +135,35 @@ notifications:any={};
       console.log(this.notifications)
     },(error)=>{
       
+    })
+
+  }
+
+  getAllMenuOptions(){
+
+    /*
+    =[
+    {name:"PorteFeuille",route:"/portefeuille",path:"autres>portefeuilles",active:true,subMenu:[{name:"Dashboard",route:"/",path:"autres>config",active:true,subMenu:[]}]},
+    {name:"Actions",route:"/operation",path:"Transactions à Placements / Financements à Action à Opérations sur titre",active:true,subMenu:[]},
+    {name:"Perimetre",route:"/tiers",path:"autres>config",active:true,subMenu:[]},
+    {name:"Menu/Roles",route:"/tiers",path:"autres>config",active:true,subMenu:[]},
+    {name:"Entite Tiers",route:"/tiers",path:"autres>config",active:true,subMenu:[]},
+     
+    {name:"Fond",route:"/fond",path:"autres>config",active:true,subMenu:[]},
+    {name:"Dashboard",route:"/",path:"autres>config",active:true,subMenu:[]}
+    ,
+    {name:"Dashboard",route:"/",path:"autres>config",active:true,subMenu:[]}
+
+
+]
+    
+    */
+    this.menuService.getAllMenu().subscribe((data)=>{
+      this.allMenuOptions=data
+
+
+    },(error)=> {
+
     })
 
   }

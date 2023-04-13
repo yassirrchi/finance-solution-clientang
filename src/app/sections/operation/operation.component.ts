@@ -49,11 +49,12 @@ export class OperationComponent implements OnInit {
     this.operationForm = this.formBuilder.group({
       quantite: [null, Validators.required],
       price: [null, Validators.required],
+      gross_am:[null, Validators.required],
       fundid: [null, Validators.required],
       walletid: [null, Validators.required],
       date_val:[null,Validators.required],
       date_op:[null,Validators.required],
-      typeop: [null, Validators.required],
+      typeop: [{ value: null, disabled: true }],
       statut: [null, Validators.required],
       createdby:sessionStorage.getItem("userId")
 
@@ -87,14 +88,16 @@ export class OperationComponent implements OnInit {
    // if(this.formVisibile==true)
     //this.formVisibile=false
     
-    this.showSearch=!this.showSearch
+    this.showSearch=true
 
   }
   onsubmit(){
 
    // alert(this.operationForm.controls['walletid'].value+" "+this.operationForm.controls['price'].value+" ")
+   
     
     this.actionService.createOperation(this.operationForm).subscribe((data)=>{
+      
 
        
       alertify.message("✔️ Operation creer ")
@@ -125,6 +128,7 @@ export class OperationComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.operationForm.disable()
      
 
     this.getAllOperations()
@@ -157,6 +161,7 @@ export class OperationComponent implements OnInit {
   }
 
   unlockForm(){
+    this.operationForm.enable()
     this.lockForm=false
   }
 
@@ -208,6 +213,10 @@ export class OperationComponent implements OnInit {
     
      
     this.displayDetails=display
+  }
+  handleShowForm(){
+    this.showSearch=false
+
   }
    
   

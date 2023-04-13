@@ -73,3 +73,13 @@ hr {
     margin: 20px 0;
   }
  
+.showWalletForm-btn{
+    background-color: orange;
+     
+    width:20%;
+}
+.showWalletForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

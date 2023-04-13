@@ -1,15 +1,19 @@
 
-<div>
+<div >
 
 <form [formGroup]="walletForm" (ngSubmit)="onsubmit()">
 
-<div class="operation-section">
+<div class="operation-section"  *ngIf="!showSearch">
     
-    <div class="operation-tool-bar">
+    <div class="operation-tool-bar" >
         <div class="input-container">
             <input type="text" placeholder="Search...">
-            <button type="submit"><i class="bi bi-search"></i></button>
+             
+            
             <button  (click)="unlockForm()" [disabled]="!lockForm"><i class="bi bi-file-earmark-plus"></i></button>
+             
+            <button  (click)="showSearchSection()" [disabled]="showSearch"  ><i class="bi bi-search"></i></button>
+
         </div>
         <div class="operation-control">
             
@@ -97,10 +101,17 @@
 
 
  
-        </div></div></div></div>
+        </div></div></div>
     
+    
+    
+    </div>
+    <div *ngIf="showSearch" class="showWalletForm"><button (click)="showSearchSection()" class="showWalletForm-btn">Saisir un nouveau porte feuille <i class="bi bi-plus-square-dotted"></i></button></div>
+    <app-portefeuilles *ngIf="showSearch"></app-portefeuilles>
 
 </form>
+
+
 
 
          
