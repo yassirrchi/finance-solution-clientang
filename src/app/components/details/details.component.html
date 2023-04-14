@@ -1,11 +1,62 @@
 <div class="detail-container" >
     <button class="close-btn" (click)="closeDetail()">X</button>
     <div class="detail op-display">
-        <h1>{{operation.quantity}} details d'operation, (summary) {{type}}</h1>
-        <div class="fund-detail">
-            <h3>{{operation.fund.code}}</h3>
+        <div class="details-header"><div class="id-operation header-item"><i class="bi bi-card-heading"></i> °: {{operation.id}}{{type}}</div> <div class="date-operation header-item">Date operation: {{operation.op_date}} </div> <div class="date-operation header-item">Date valeur: {{operation.val_date}} </div>    </div>
+        <div class="detail-part">
+            <details>
+                <summary>Prix/Quantite</summary>
+                <div class="detail-div">
+
+                   <div class="qt-pr-gm"> <div class="span-qt num">{{operation.quantity}}(quntite)</div><div class="span-op">x</div>  <div class="span-pr num">{{operation.price}}(prix)</div><div class="span-op">=</div> <div class="span-gm num">{{operation.gross_amount}}</div></div>
+
+                </div>
+            </details>
+            
 
         </div>
+        <div class="detail-part">
+            <details>
+                <summary>PorteFeuille</summary>
+                <div class="detail-div">
+
+                </div>
+            </details>
+            
+
+        </div>
+        
+        
+        <div class="detail-part">
+            <details>
+                <summary>PorteFeuille</summary>
+                <div class="detail-div">
+
+                </div>
+            </details>
+            
+
+        </div>
+        <div class="detail-part">
+            <details>
+                <summary>Fond</summary>
+                <div class="detail-div">
+
+                </div>
+            </details>
+            
+
+        </div>
+        <div class="detail-part">
+            <details>
+                <summary>Entites Tiers</summary>
+                <div class="detail-div">
+
+                </div>
+            </details>
+            
+
+        </div>
+        
 
 
 

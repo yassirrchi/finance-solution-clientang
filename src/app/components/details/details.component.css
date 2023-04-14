@@ -18,13 +18,11 @@
     color: white;
     height: 90%;
     width: 90%;
+    padding: 0px;
+
     
 }
-.fund-detail{
-    background-color: rgb(255, 0, 0);
-    width: 300px;
-    height: 300px;
-}
+ 
 .close-btn{
     position: absolute;
     top:5%;
@@ -37,3 +35,59 @@
 
 
 }
+.details-header{
+     
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+     
+}
+.header-item{
+    background-color: rgb(158, 103, 0);
+    padding: 5px 5px;
+    border: 1px solid black;
+     
+
+}
+.detail-div{
+    background-color: rgb(70, 70, 70);
+    width: 100%;
+    height: 100px;
+}
+summary{
+    width: 100%;
+    background-color: rgb(255, 123, 0);
+    text-align: center;
+    
+}
+.qt-pr-gm{
+     
+    text-align: center;
+    font-size: larger;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.span-qt,.span-pr{
+   background-color: rgb(29, 29, 29);
+    
+     
+
+}
+.span-gm{
+    background-color: rgb(158, 108, 0);
+}
+.num{
+    width: 25%;
+
+}
+.span-op{
+    width: 7.5%;
+    background-color: rgb(90, 90, 90);
+
+}
+
