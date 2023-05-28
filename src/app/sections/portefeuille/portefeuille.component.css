@@ -83,3 +83,12 @@ hr {
     display: flex;
     justify-content: center;
 }
+.act-ext>input{
+    background-color: #343434;
+    
+
+
+ }
+ .act-ext>input{
+    margin: 0px 30px;
+ }

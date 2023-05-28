@@ -1,7 +1,8 @@
 
 <div class="search-box">
+    <form [formGroup]="searchForm">
     <div class="search-bar">
-        <input type="text" placeholder="Code de portefeuille" id="input" >
+        <input type="text" placeholder="Code de portefeuille" id="input" formControlName="code" (keyup)="onType()" >
         <button type="submit"><i class="bi bi-search"></i></button>
          
         
@@ -21,16 +22,17 @@
                 <span> Active</span><input type="checkbox">
                 <span> Inactive</span><input type="checkbox">
                 
-            
+             
             </div>
             
             
         </div>
+       
         </details>
         
 
     </div>
-
+</form>
 </div>
 <div class="portefeuilles-container">
     

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WalletService } from 'src/app/Services/wallet.service';
 
 @Component({
@@ -10,10 +10,24 @@ import { WalletService } from 'src/app/Services/wallet.service';
 export class PortefeuillesComponent implements OnInit {
   searchForm!:FormGroup;
   wallets:any
+   
 
 
 
-  constructor(private walletService:WalletService){}
+  constructor(private walletService:WalletService,private formBuilder: FormBuilder){
+
+    this.searchForm = this.formBuilder.group({
+      code: ['', Validators.required],
+      name: ['', [Validators.required]],
+      active: [false, Validators.required],
+      external_code: ['', Validators.required],
+      status: ['DRAFT', Validators.required],
+
+    });
+    
+  
+  
+  }
   
 
   ngOnInit(): void {
@@ -30,6 +44,15 @@ export class PortefeuillesComponent implements OnInit {
       console.log(error)
     })
      
+  }
+  onType(){
+     
+     
+    this.walletService.searchService(this.searchForm).subscribe((data)=>{
+
+      this.wallets=data
+
+    },(error)=>{})
   }
 
 

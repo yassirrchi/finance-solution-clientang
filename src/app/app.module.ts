@@ -20,6 +20,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { DashboardComponent } from './sections/dashboard/dashboard.component';
 import { UsersettingsComponent } from './sections/usersettings/usersettings.component';
 import { OperationsTableComponent } from './components/operations-table/operations-table.component';
+import { InputComponent } from './tickets/input/input.component';
  
  
 
@@ -40,6 +41,7 @@ import { OperationsTableComponent } from './components/operations-table/operatio
     DashboardComponent,
     UsersettingsComponent,
     OperationsTableComponent,
+    InputComponent,
     
      
   ],
